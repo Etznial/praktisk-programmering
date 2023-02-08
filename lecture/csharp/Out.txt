@@ -1,0 +1,16 @@
+class scope s
+block scope
+hello from main
+hello
+world
+new world from main
+world
+hello1
+world1
+another greeting
+default greetingthe value of pi in Math is 3.14159265358979
+the value of pi in Math is 0
+the value of e in Math is 0
+sqrt2^2 = 2
+1/2 = 0 because cs is strongly typed
+1.0/2 = 0.5
