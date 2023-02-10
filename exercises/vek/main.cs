@@ -23,6 +23,8 @@ public static class main{
 		x.print("x = ");
 		(x+5).print("x+5 = ");
 		(5*x).print("5*x = ");
+		WriteLine($"u.cross(v) = {u.cross(v)}");
+		WriteLine($"u.norm() = {u.norm()}");
 	
 	}
 }
