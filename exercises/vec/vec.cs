@@ -3,7 +3,7 @@ using static System.Math;
 public class vec{
 	public double x,y,z;
 	public vec (double a, double b, double c){x=a;y=b;z=c;}
-	public void print(string s){Write(s);WriteLine($"{x} {y} {z}");}
+	public void print(string s){Write(s);WriteLine($"({x} {y} {z})");}
 	public void print(){this.print("");}
 	
 	public override string ToString(){return $"({x} {y} {z})";}
