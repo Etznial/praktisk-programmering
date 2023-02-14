@@ -1,4 +1,4 @@
-ut.txt : main.exe
+Out.txt : main.exe
 	mono main.exe > Out.txt
 
 main.exe : main.cs vec.dll
