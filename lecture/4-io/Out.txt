@@ -1,0 +1,42 @@
+hello
+hello
+world
+-input:infile.txt
+-output:outfile.txt
+-numbers:1,2,3,4,5,6
+1.00e+00
+2.00e+00
+3.00e+00
+4.00e+00
+5.00e+00
+6.00e+00
+1 0.841470984807897
+2 0.909297426825682
+3 0.141120008059867
+hello
+hello
+world
+-input:infile.txt
+-output:outfile.txt
+-numbers:1,2,3,4,5,6
+1.00e+00
+2.00e+00
+3.00e+00
+4.00e+00
+5.00e+00
+6.00e+00
+1 0.841470984807897
+2 0.909297426825682
+3 0.141120008059867
+hello
+hello
+world
+-input:infile.txt
+-output:outfile.txt
+-numbers:9,8,7
+9.00e+00
+8.00e+00
+7.00e+00
+1 0.841470984807897
+2 0.909297426825682
+3 0.141120008059867
