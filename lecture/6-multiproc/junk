@@ -1,0 +1,24 @@
+nterms = 100000000 nthreads = 1
+x.a = 1 x.b = 100000001
+master thread: now waiting for other threads...
+thread number 1 a=1 b=100000001
+nterms = 100000000 nthreads = 1
+x.a = 1 x.b = 100000001
+nterms = 100000000 nthreads = 1
+nterms = 100000000 nthreads = 1
+x.a = 1 x.b = 100000001
+x.a = 1 x.b = 100000001
+master thread: now waiting for other threads...
+master thread: now waiting for other threads...
+thread number 1 a=1 b=100000001
+master thread: now waiting for other threads...
+thread number 1 a=1 b=100000001
+thread number 1 a=1 b=100000001
+thread number 1 partial sum = 18.9978964138526
+total sum = 18.9978964138526
+thread number 1 partial sum = 18.9978964138526
+total sum = 18.9978964138526
+thread number 1 partial sum = 18.9978964138526
+total sum = 18.9978964138526
+thread number 1 partial sum = 18.9978964138526
+total sum = 18.9978964138526

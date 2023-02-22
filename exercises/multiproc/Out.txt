@@ -1,0 +1,64 @@
+=======================[new threading]=======================
+nterms = 1000000000 nthreads = 1
+x.a = 1 x.b = 1000000001
+master thread: now waiting for other threads...
+thread number 1 a=1 b=1000000001
+thread number 1 partial sum = 21.3004815023485
+total sum = 21.3004815023485
+real 2.49
+user 2.29
+sys 0.02
+=======================[new threading]=======================
+nterms = 1000000000 nthreads = 2
+x.a = 1 x.b = 500000001
+x.a = 500000001 x.b = 1000000001
+master thread: now waiting for other threads...
+thread number 2 a=500000001 b=1000000001
+thread number 1 a=1 b=500000001
+thread number 2 partial sum = 0.693147180059924
+thread number 1 partial sum = 20.6073343222888
+total sum = 21.3004815023488
+real 1.36
+user 2.29
+sys 0.02
+=======================[new threading]=======================
+nterms = 1000000000 nthreads = 3
+x.a = 1 x.b = 333333334
+x.a = 333333334 x.b = 666666667
+x.a = 666666667 x.b = 1000000000
+master thread: now waiting for other threads...
+thread number 1 a=1 b=333333334
+thread number 1 partial sum = 20.2018692136806
+thread number 3 a=666666667 b=1000000001
+thread number 3 partial sum = 0.405465108858221
+thread number 2 a=333333334 b=666666667
+thread number 2 partial sum = 0.693147179810055
+total sum = 21.3004815023489
+real 0.98
+user 2.38
+sys 0.00
+=======================[new threading]=======================
+nterms = 1000000000 nthreads = 4
+x.a = 1 x.b = 250000001
+x.a = 250000001 x.b = 500000001
+x.a = 500000001 x.b = 750000001
+x.a = 750000001 x.b = 1000000001
+master thread: now waiting for other threads...
+thread number 1 a=1 b=250000001
+thread number 4 a=750000001 b=1000000001
+thread number 4 partial sum = 0.287682072285131
+thread number 1 partial sum = 19.9141871427291
+thread number 2 a=250000001 b=500000001
+thread number 2 partial sum = 0.693147179559917
+thread number 3 a=500000001 b=750000001
+thread number 3 partial sum = 0.405465107774879
+total sum = 21.300481502349
+real 0.81
+user 2.40
+sys 0.03
+=======================[new threading with Parallel.For]=======================
+nterms = 1000000000 nthreads = 4 sum = 14.1985473616946
+Grunden til at det er hurtigerer at køre et serial for-loop end det er for Parallel.For er fordi man kalder delegate(int i) i Parallel.For mega mange gange, hvor man ikke kalder en function i det simple for-loop, har man meget mere komplekse funktioner end at summere tal, så kan man godt gå tilbage til Parallel.For fordi så er tiden det tager at kalde delegate() meget lille i forhold til den mere komplekse funktion man multithreader. Vil man undgå at kalde delegate skal man multithreade manuelt
+real 5.65
+user 43.55
+sys 0.02

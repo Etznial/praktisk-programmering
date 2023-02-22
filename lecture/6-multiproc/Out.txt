@@ -1,0 +1,54 @@
+nterms = 2000000000 nthreads = 1
+x.a = 1 x.b = 2000000001
+master thread: now waiting for other threads...
+thread number 1 a=1 b=2000000001
+thread number 1 partial sum = 21.9936286826628
+total sum = 21.9936286826628
+real 4.74
+user 4.56
+sys 0.03
+nterms = 2000000000 nthreads = 2
+x.a = 1 x.b = 1000000001
+x.a = 1000000001 x.b = 2000000001
+master thread: now waiting for other threads...
+thread number 1 a=1 b=1000000001
+thread number 2 a=1000000001 b=2000000001
+thread number 2 partial sum = 0.693147180309972
+thread number 1 partial sum = 21.3004815023485
+total sum = 21.9936286826585
+real 2.53
+user 4.67
+sys 0.01
+nterms = 2000000000 nthreads = 3
+x.a = 1 x.b = 666666667
+x.a = 666666667 x.b = 1333333333
+x.a = 1333333333 x.b = 1999999999
+master thread: now waiting for other threads...
+thread number 1 a=1 b=666666667
+thread number 2 a=666666667 b=1333333333
+thread number 3 a=1333333333 b=1999999999
+thread number 1 partial sum = 20.8950163934907
+thread number 3 partial sum = 0.405465107983142
+thread number 2 partial sum = 0.693147180184981
+total sum = 21.9936286816588
+real 1.76
+user 4.73
+sys 0.00
+nterms = 2000000000 nthreads = 4
+x.a = 1 x.b = 500000001
+x.a = 500000001 x.b = 1000000001
+x.a = 1000000001 x.b = 1500000001
+x.a = 1500000001 x.b = 2000000001
+thread number 1 a=1 b=500000001
+thread number 2 a=500000001 b=1000000001
+thread number 3 a=1000000001 b=1500000001
+master thread: now waiting for other threads...
+thread number 4 a=1500000001 b=2000000001
+thread number 1 partial sum = 20.6073343222888
+thread number 3 partial sum = 0.4054651079415
+thread number 2 partial sum = 0.693147180059924
+thread number 4 partial sum = 0.287682072368476
+total sum = 21.9936286826587
+real 1.40
+user 4.78
+sys 0.05
