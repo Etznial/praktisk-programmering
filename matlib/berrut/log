@@ -1,0 +1,13 @@
+\
+set term svg size 640,480 font "Arial,14";\
+set out "Berrut.svg";\
+set xlabel "x";\
+set ylabel "y";\
+set key right;\
+set tics out;\
+set title "Rational (Berrut) vs polynomial interpolation";\
+plot [][:1.5]\
+ "out.txt" index 0 with points pointtype 7 pointsize 0.5 title "data"\
+,"out.txt" index 1 using 1:2 with lines title "polynomial"\
+,"out.txt" index 1 using 1:3 with lines title "rational function"\
+

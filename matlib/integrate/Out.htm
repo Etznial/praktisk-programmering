@@ -1,0 +1,29 @@
+<meta charset="UTF-8"><pre>
+quad: testing ∫_0^PI Exp(-x)Sin(x)^2dx=0.382714432694491,acc=1E-06,eps=0
+result = 0.382714440037062, relative error =1.9185507614382E-08 ncalls=40
+test passed
+
+quad: testing ∫_-inf^inf exp(-x^2)dx=1.77245385090552,acc=1E-06,eps=0
+result = 1.77245377955755, relative error =4.02537795889148E-08 ncalls=160
+test passed
+
+quad: testing ∫_0^inf exp(-x^2)dx=0.886226925452758,acc=1E-06,eps=0
+result = 0.886226889778775, relative error =4.02537795889148E-08 ncalls=80
+test passed
+
+quad: testing ∫_0^1 1/Sqrt(x)dx=2, acc=1E-06 eps=0
+result = 2.0000000081872, relative error =4.09360012554316E-09 ncalls=24
+test passed
+
+quad: ∫_0^1 Log(x)/Sqrt(x)dx=-4, acc=1E-09 eps=0
+result = -3.99999999999322, relative error =-1.69453340248538E-12 ncalls=824
+test passed
+
+failed tests: 0
+adapt3o: testing ∫_0^PI Exp(-x)Sin(x)^2dx=0.382714432694491,acc=1E-06,eps=0
+result = 0.382714413101576, relative error =5.11946072433215E-08 ncalls=267
+test passed
+
+
+scipy.integrate int_0^1 log(x)/sqrt(x) acc=1e-9 eps=0
+result= (-4.000000000000085, 1.354472090042691e-13) ncalls= 315

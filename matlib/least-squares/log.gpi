@@ -1,0 +1,13 @@
+\
+set term pdf;\
+set out "Fig.pdf";\
+set key left;\
+set xlabel "$x$";\
+set ylabel "$y$";\
+set title "Least-squares fit";\
+plot \
+ "out.data.txt" index 0 with errorbars title "data"\
+,"out.data.txt" index 1 with lines title "$F_{\vec c}(x)\doteq c_0+c_1x+c_2x^2$"\
+,"out.data.txt" index 2 with lines title "$F_{\vec{c}+\Delta\vec{c}}(x)$"\
+,"out.data.txt" index 3 with lines title "$F_{\vec{c}-\Delta\vec{c}}(x)$"\
+

@@ -1,0 +1,24 @@
+set term svg font "Arial,20" size 1024,600
+set out "Cspline.svg"
+set multiplot layout 2,2 title "cspline, derivative, integral"
+set key top right
+set xtics 1
+set grid
+set rmargin 0
+plot [][-1:1]\
+ "out.txt" index 0 with points pointtype 7 title "points"\
+,"out.txt" index 1 u 1:2 with lines title "exact"\
+,"out.txt" index 1 u 1:3 with lines title "cspline"
+set key center top
+set ytics format ""
+set rmargin
+plot [][-1:1]\
+ "out.txt" index 2 u 1:2 with lines title "exact derivative"\
+,"out.txt" index 2 u 1:3 with lines title "spline derivative"
+set ytics format "%h"
+set key center bottom
+set rmargin 0
+plot [][0:2]\
+ "out.txt" index 3 u 1:2 with lines title "exact integral"\
+,"out.txt" index 3 u 1:3 with lines title "spline integral"
+unset multiplot

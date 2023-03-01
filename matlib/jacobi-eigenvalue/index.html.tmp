@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+ <head>
+  <title>Index of /prog/matlib/jacobi-eigenvalue</title>
+ </head>
+ <body>
+<h1>Index of /prog/matlib/jacobi-eigenvalue</h1>
+<ul><li><a href="/prog/matlib/"> Parent Directory</a></li>
+<li><a href="EVD.cs"> EVD.cs</a></li>
+<li><a href="Makefile"> Makefile</a></li>
+<li><a href="Times.gsl.svg"> Times.gsl.svg</a></li>
+<li><a href="Times.svg"> Times.svg</a></li>
+<li><a href="fit.log"> fit.log</a></li>
+<li><a href="jacobi.cs"> jacobi.cs</a></li>
+<li><a href="main"> main</a></li>
+<li><a href="main-nov.cs"> main-nov.cs</a></li>
+<li><a href="main-nov.exe"> main-nov.exe</a></li>
+<li><a href="main.c"> main.c</a></li>
+<li><a href="main.cs"> main.cs</a></li>
+<li><a href="main.exe"> main.exe</a></li>
+<li><a href="mainJ.cs"> mainJ.cs</a></li>
+<li><a href="mainJ.exe"> mainJ.exe</a></li>
+<li><a href="matrix.dll"> matrix.dll</a></li>
+<li><a href="out.gsl.txt"> out.gsl.txt</a></li>
+<li><a href="out.times-nov.txt"> out.times-nov.txt</a></li>
+<li><a href="out.times.txt"> out.times.txt</a></li>
+<li><a href="out.times1.txt"> out.times1.txt</a></li>
+<li><a href="out.timesJ.txt"> out.timesJ.txt</a></li>
+<li><a href="out.txt"> out.txt</a></li>
+<li><a href="outJ.txt"> outJ.txt</a></li>
+</ul>
+</body></html>

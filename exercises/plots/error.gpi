@@ -1,0 +1,13 @@
+set terminal svg 
+set key bottom right
+set output "Error.svg"
+set xlabel "x"
+set ylabel "y"
+set tics out
+set xzeroaxis	
+set yzeroaxis
+#set samples 10000
+set title "Error fuction"
+plot [-4:4] [-1:1]\
+ "error.data" with lines linetype 1 title "fuction" \
+,"errorTable.data" with points pt 2 title "table" \

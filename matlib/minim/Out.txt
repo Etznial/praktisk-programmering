@@ -1,0 +1,29 @@
+qnewton.sr1: Rosenbrock's valley function
+start point:         3          3 
+ncalls=448
+minimum    :         1          1 
+f(x_min)          = 3.97547E-11
+|gradient| goal   = 0.0001
+|gradient| actual = 9.272552E-05
+test passed
+
+qnewton.sr1: Himmelblau's function
+start point:         5          3 
+ncalls=55
+minimum    :     -2.81       3.13 
+f(x_min)          = 9.794395E-13
+|gradient| goal   = 0.0001
+|gradient| actual = 1.413644E-05
+test passed
+
+simplex.downhill: Rosenbrock's valley function
+start point:         3          3 
+ncalls=180
+minimum    :         1          1 
+f(x_min)          = 5.787692E-08
+
+simplex.downhill: Himmelblau's function
+start point:         5          3 
+ncalls=106
+minimum    :         3          2 
+f(x_min)          = 6.737413E-06
