@@ -13,3 +13,6 @@ sfuns.dll : sfuns.cs
 
 main.exe : main.cs sfuns.dll
 	mcs main.cs -reference:sfuns.dll -target:exe -out:main.exe
+
+clean :
+	rm -f Out.txt sfuns.dll main.exe
