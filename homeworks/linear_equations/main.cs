@@ -15,7 +15,7 @@ public static class QRGS{
 			}
 		}
 	}
-	public static vector solve(matrix Q, matrix R, vector b){ /* with back substitution */
+	public static vector solve(matrix Q, matrix R, vector b){ /* with back substitution, solver ting på formen Rx=c, c=QTb */
 		int n = b.size;
 		vector solutions = new vector(n);
 		for(int i=n-1; i>=0;i--){
@@ -25,7 +25,7 @@ public static class QRGS{
 			}
 		solutions[i]=1.0/R[i][i]*(b[i]-tempSum);
 		}
-		return solutions; // Retunerer noget på formen Rx=QTb
+		return solutions; 
 	}
 		
 	public static double det(matrix R){ /* R skal være decomposed inden man indsætter den */
@@ -36,27 +36,30 @@ public static class QRGS{
 		}
 		return tempSum;
 	}
-/*
+
 	public static matrix inverse(matrix Q, matrix R){
 		int n = R.size1;
-
-
+		matrix AI = new matrix(n,n); /* Detter er A inverse */
 		for(int i=0; i<n; i++){
-			
+			vector e = new vector(n);
+			e[i]=1;
+			vector QTe = Q.transpose()*e;
+			AI[i] = solve(Q,R,QTe);		
 		}
+		return AI;
 	}
-*/
+
 }
 
 
 class main{
 	public static void Main(){
-		{ // A
+		var random = new System.Random(1);
+		{// A
 		WriteLine("====================[A]====================");
 	
 	
 	
-		var random = new System.Random(1);
 		
 		
 		
@@ -153,9 +156,37 @@ class main{
 		vector Ax = A*xs;
 		Ax.print();
 		}// solve
-		}// A
+	        }// A
+		{// B
 		WriteLine("====================[B]====================");
-
+		WriteLine("=====[generate a random square matrix A (of a modest size)]=====");
+		int n = random.Next(7,9);
+		int m = n;
+		matrix A = new matrix(m,n);
+		for(int c=0; c<n;c++){
+			for(int r=0; r<m;r++){
+				A[c][r] = random.NextDouble();
+			}
+		}
+		WriteLine("Print matrix A");
+		A.print();
+		WriteLine("=====[factorize matrix A it into QR]=====");
+		var R = new matrix(n,n); /* making R with dimensions [m,m] */
+		matrix Q = A.copy(); /* making Q as a copy of A*/
+		QRGS.decomp(Q,R); 
+		WriteLine("Print matrix Q");
+		Q.print(); 
+		WriteLine("Print matrix R");
+		R.print();
+		WriteLine("=====[calculate the inverse B]=====");
+		matrix B = QRGS.inverse(Q,R);
+		WriteLine("Print matrix B");
+		B.print();
+		WriteLine("=====[check that AB=I, where I is the identity matrix]=====");
+		WriteLine("Print matrix A*B");
+		matrix I = A*B;
+		I.print();
+		} // B
 
 	}
 }// class
