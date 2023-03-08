@@ -15,7 +15,7 @@ static void Main(string[] args){
 					WriteLine($"{x} {sfuns.erf(x)}");
 					}
 				} 
-		}
+		} 
 	}
 }
 
