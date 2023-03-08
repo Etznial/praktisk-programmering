@@ -36,7 +36,7 @@ public static class QRGS{
 		}
 		return tempSum;
 	}
-
+/*
 	public static matrix inverse(matrix Q, matrix R){
 		int n = R.size1;
 
@@ -45,6 +45,7 @@ public static class QRGS{
 			
 		}
 	}
+*/
 }
 
 
