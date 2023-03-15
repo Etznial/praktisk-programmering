@@ -1,6 +1,7 @@
 using System;
 using static System.Console;
 using static System.Math;
+using static System.Diagnostics;
 
 public static class QRGS{
 	public static void decomp(matrix Q, matrix R){ 
@@ -186,8 +187,30 @@ class main{
 		WriteLine("Print matrix A*B");
 		matrix I = A*B;
 		I.print();
-		} // B
+		}// B
+		{// C
+		WriteLine("====================[C]====================");
+		
+		Stopwatch stopwatch = new Stopwatch();
 
+		for(int i=0; i<N; i++){
+			stopwatch.Start();
+
+			make NxN matrix
+			
+			give random numbers
+					
+		    	fac NxN matrix 
+			stopwatch.Stop();
+			TimeSpan elapsed = stopwatch.Elapsed;
+		}
+		
+
+		
+		WriteLine($"{N} {time.elapsed}");
+		
+
+		}// C
 	}
 }// class
 
