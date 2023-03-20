@@ -30,7 +30,10 @@ public static class jacobi {
 				for(int q=p+1;q<n;q++){
 					double apq=D[q,p], app=D[p,p], aqq=D[q,q];
 					double theta = 0.5*Atan2(2*apq,aqq-app);
-					if(apq > 1e-15 | -apq >1e-15){ // do rotation
+					double c=Cos(theta), s=Sin(theta);
+					double new_app=c*c*app-2*s*c*apq+s*s*aqq;
+					double new_aqq=s*s*app-2*s*c*apq+c*c*aqq;
+					if(new_app!=app || new_aqq!=aqq){ // do rotation
 						changed = true;
 						jacobi.Jtimes(D,p,q,-theta); // D←JT*D
 						jacobi.timesJ(D,p,q, theta); // D←D*J 

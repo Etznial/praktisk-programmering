@@ -1,18 +1,14 @@
 using System;
 using static System.Console;
 using static System.Math;
-class main{
-	public static void Main(string[] args){
-		double rmax = 0;
-		int N = 0;
+using System.IO;
 
-		foreach(var arg in args){
-			var words = arg.Split(':');
-			if(words[0] == "-rmax"){rmax = double.Parse(words[1]);}
-			if(words[0] == "-N"){N = int.Parse(words[1]);}
-		}
-		double dr = rmax/N;
-		WriteLine($"rmax:{rmax} N:{N} dr:{dr}");
+
+
+class main{
+
+
+	static matrix make_ham(double dr,double rmax){
 		/* create hamiltonian */
 		int npoints = (int)(rmax/dr)-1;
 		vector r = new vector(npoints);
@@ -26,6 +22,23 @@ class main{
 		H[npoints-1,npoints-1]=-2;
 		matrix.scale(H,-0.5/(dr*dr));
 		for(int i=0; i<npoints; i++)H[i,i]+=-1/r[i];
+		return H;
+	}
+
+	public static void Main(string[] args){
+		
+		double rmax = 5;
+		double dr = 0.3;
+
+		foreach(var arg in args){
+			var words = arg.Split(':');
+			if(words[0] == "-rmax"){rmax = double.Parse(words[1]);}
+			if(words[0] == "-dr"){dr = double.Parse(words[1]);}
+		}
+		//double dr = rmax/N;
+		int npoints = (int)(rmax/dr)-1;
+		WriteLine($"rmax:{rmax} npoints:{npoints} dr:{dr}");
+		
 		
 		/* create symetric matrix */
 		var random = new System.Random(1);
@@ -43,6 +56,8 @@ class main{
 		matrix I = V.copy();
 		I.set_identity();
 		jacobi.decomp(D,V);
+
+
 
 		//A.print();
 	
@@ -76,24 +91,110 @@ class main{
 		VVT.print();
 	
 		WriteLine("==============================[B]==============================");
-		WriteLine("print H");
-		H.print();	
+		/* create data for dr lowest eigen values */
+
+		string toWrite = $"";
+		double drTemp = dr;
+		do {
+			matrix H = make_ham(drTemp, rmax);
+			D = H.copy();
+			n = H.size1;
+			V = new matrix(n,n);
+			V.set_identity();
+			jacobi.decomp(D,V);
+			WriteLine($"drTemp: {drTemp} rmax: {rmax} npoints: {npoints}");
+			if(n<9){
+				D.print();
+			}else{
+				WriteLine($"matrix is of size {n}x{n} which is too big to be printed");
+			}
+
+			double lowest = D[0,0];
+			for(int i=0; i>n-1; i++){
+				if(lowest>D[i,i]){
+					lowest=D[i,i];
+				}
+			}
+			toWrite += $"{drTemp}\t{lowest}\n";
+			drTemp += 0.01;
+			
+		} while(drTemp < 0.5);
+		File.WriteAllText("dr_lowest.data",toWrite); /* create/overrite file with name dr_lowest.data with string toWrite */
+		
+		
+		/* create data for rmax lowest eigen values */
+		toWrite = $""; /* overwrite for empty sting */
+		double rmaxTemp = rmax;
+		for(int m=0; m<15; m++){
+			matrix H = make_ham(dr, rmax);
+			D = H.copy();
+			n = H.size1;
+			V = new matrix(n,n);
+			V.set_identity();
+			jacobi.decomp(D,V);
+			WriteLine($"dr: {dr} rmaxTemp: {rmaxTemp} npoints: {npoints}");
+			
+
+			if(n<9){
+				D.print();
+			}else{
+				WriteLine($"matrix is of size {n}x{n} which is too big to be printed");
+			}
+
+			double lowest = D[0,0];
+			for(int i=0; i>n-1; i++){
+				if(lowest>D[i,i]){
+					lowest=D[i,i];
+				}
+			}
+			toWrite += $"{rmaxTemp}\t{lowest}\n";
+			rmaxTemp++;
+		}
+		File.WriteAllText("rmax_lowest.data",toWrite);
+		
+		/* træk vektor ud af matrix */
+		{ /* need a new scope */
+		matrix H = make_ham(dr, rmax);
 		D = H.copy();
 		n = H.size1;
 		V = new matrix(n,n);
+		V.set_identity();
 		jacobi.decomp(D,V);
-		WriteLine("print D");
-		D.print();
+		WriteLine($"dr: {dr} rmaxTemp: {rmaxTemp} npoints: {npoints}");
 		
-		double lowest = D[0,0];
-		for(int i=0; i>n-1; i++){
-			if(lowest>D[i,i]){
-				lowest=D[i,i];
+		for(int j=0; j<4; j++){
+			toWrite = "";
+			vector r = new vector(n);
+			for(int i=0; i<n; i++){r[i]=dr*(i+1);}  /* laver r vector */
+			for(int i=0; i<n; i++){
+				toWrite += $"{r[i]}\t{V[j][i]/r[i]}\n";
 			}
+
+		File.WriteAllText($"eigenfunc{j}.data",toWrite);
 		}
-		WriteLine($"lowest eigen-function:{lowest}");
-		WriteLine("print V");
-		V.print();
+		} /* the new scope */
+	
+		
+		
+		
+		//WriteLine("print H");
+		//H.print();	
+		//D = H.copy();
+		//n = H.size1;
+		//V = new matrix(n,n);
+		//jacobi.decomp(D,V);
+		//WriteLine("print D");
+		//D.print();
+		
+		//double lowest = D[0,0];
+		//for(int i=0; i>n-1; i++){
+		//	if(lowest>D[i,i]){
+		//		lowest=D[i,i];
+		//	}
+		//}
+		//WriteLine($"lowest eigen-function:{lowest}");
+		//WriteLine("print V");
+		//V.print();
 		
 	}
 }// class

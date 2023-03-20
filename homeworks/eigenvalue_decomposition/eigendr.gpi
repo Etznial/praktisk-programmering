@@ -1,0 +1,11 @@
+set terminal svg
+set key top right
+set output "Eigendr.svg"
+set xlabel "dr [Å]"
+set ylabel "E0 [Ha]"
+set tics out
+set xzeroaxis
+set yzeroaxis
+set title "dr convergence"
+plot [0:0.51] [-0.4:-0.6]\
+"dr_lowest.data" with points pt 4 title "experiment"

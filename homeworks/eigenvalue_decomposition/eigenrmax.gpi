@@ -1,0 +1,11 @@
+set terminal svg
+set key top right
+set output "Eigenrmax.svg"
+set xlabel "rmax [Å]"
+set ylabel "E0 [Ha]"
+set tics out
+set xzeroaxis
+set yzeroaxis
+set title "Rmax convergence"
+plot [0:17] [-0.6:3]\
+"rmax_lowest.data" with points pt 4 title "experiment"
