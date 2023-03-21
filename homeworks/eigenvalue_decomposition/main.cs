@@ -7,6 +7,27 @@ using System.IO;
 
 class main{
 
+	static double R10(double r){
+		return 2*Exp(-r)*1/(2*Sqrt(PI));
+	}
+
+	static double R20(double r){
+		return 1/(Sqrt(2))*(1-r/2)*Exp(-r/2)*1/(2*Sqrt(PI));
+	}
+
+	static double R30(double r){
+		return 2/(3*Sqrt(3))*(1-2/3*r+2/27*Pow(r,2))*Exp(-r/3)*1/(2*Sqrt(PI));
+	}
+
+	static void make_data(double start, double stop, Func<double, double> func, string name, double inc = 0.1){
+		string toWrite = "";
+		double r = start;
+		do{
+			toWrite += $"{r}\t{func(r)}\n";
+			r += inc;
+		}while(r<stop);
+		File.WriteAllText($"{name}.data", toWrite);
+	}
 
 	static matrix make_ham(double dr,double rmax){
 		/* create hamiltonian */
@@ -160,9 +181,10 @@ class main{
 		V = new matrix(n,n);
 		V.set_identity();
 		jacobi.decomp(D,V);
+		rmaxTemp = rmax;
 		WriteLine($"dr: {dr} rmaxTemp: {rmaxTemp} npoints: {npoints}");
 		
-		for(int j=0; j<4; j++){
+		for(int j=0; j<3; j++){
 			toWrite = "";
 			vector r = new vector(n);
 			for(int i=0; i<n; i++){r[i]=dr*(i+1);}  /* laver r vector */
@@ -173,9 +195,10 @@ class main{
 		File.WriteAllText($"eigenfunc{j}.data",toWrite);
 		}
 		} /* the new scope */
-	
 		
-		
+		make_data(0,9,R10,"R10");
+		make_data(0,9,R20,"R20");
+		make_data(0,9,R30,"R30");
 		
 		//WriteLine("print H");
 		//H.print();	

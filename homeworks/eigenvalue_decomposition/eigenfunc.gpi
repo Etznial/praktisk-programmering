@@ -2,13 +2,15 @@ set terminal svg
 set key top right
 set output "Eigenfunc.svg"
 set xlabel "r [Å]"
-set ylabel "psi**2"
+set ylabel "ψ"
 set tics out
 set xzeroaxis
 set yzeroaxis
-set title "Wave func squared"
+set title "Wave func"
 plot [0:9] [-0.6:0.6]\
-"eigenfunc0.data" with line linetype 1 title "lowest"\
-,"eigenfunc1.data" with line linetype 2 title "2nd lowest"\
-,"eigenfunc2.data" with line linetype 3 title "3rd lowest"\
-,"eigenfunc3.data" with line linetype 4 title "4th lowest"\
+"eigenfunc0.data" with line linetype 0 title "lowest"\
+,"eigenfunc1.data" with line linetype 1 title "2nd lowest"\
+,"eigenfunc2.data" with line linetype 2 title "3rd lowest"\
+,"R10.data" with line linetype 3 title "R10"\
+,"R20.data" with line linetype 4 title "R20"\
+,"R30.data" with line linetype 5 title "R30"\
