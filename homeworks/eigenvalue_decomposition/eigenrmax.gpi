@@ -7,5 +7,5 @@ set tics out
 set xzeroaxis
 set yzeroaxis
 set title "Rmax convergence"
-plot [0:17] [-0.6:3]\
+plot [-1:16] [-0.6:3]\
 "rmax_lowest.data" with points pt 4 title "experiment"

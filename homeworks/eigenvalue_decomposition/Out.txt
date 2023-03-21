@@ -134,34 +134,34 @@ drTemp: 0.48 rmax: 9 npoints: 89
 matrix is of size 17x17 which is too big to be printed
 drTemp: 0.49 rmax: 9 npoints: 89
 matrix is of size 17x17 which is too big to be printed
+dr: 0.1 rmaxTemp: 1 npoints: 89
+matrix is of size 9x9 which is too big to be printed
+dr: 0.1 rmaxTemp: 2 npoints: 89
+matrix is of size 19x19 which is too big to be printed
+dr: 0.1 rmaxTemp: 3 npoints: 89
+matrix is of size 29x29 which is too big to be printed
+dr: 0.1 rmaxTemp: 4 npoints: 89
+matrix is of size 39x39 which is too big to be printed
+dr: 0.1 rmaxTemp: 5 npoints: 89
+matrix is of size 49x49 which is too big to be printed
+dr: 0.1 rmaxTemp: 6 npoints: 89
+matrix is of size 59x59 which is too big to be printed
+dr: 0.1 rmaxTemp: 7 npoints: 89
+matrix is of size 69x69 which is too big to be printed
+dr: 0.1 rmaxTemp: 8 npoints: 89
+matrix is of size 79x79 which is too big to be printed
 dr: 0.1 rmaxTemp: 9 npoints: 89
 matrix is of size 89x89 which is too big to be printed
 dr: 0.1 rmaxTemp: 10 npoints: 89
-matrix is of size 89x89 which is too big to be printed
+matrix is of size 99x99 which is too big to be printed
 dr: 0.1 rmaxTemp: 11 npoints: 89
-matrix is of size 89x89 which is too big to be printed
+matrix is of size 109x109 which is too big to be printed
 dr: 0.1 rmaxTemp: 12 npoints: 89
-matrix is of size 89x89 which is too big to be printed
+matrix is of size 119x119 which is too big to be printed
 dr: 0.1 rmaxTemp: 13 npoints: 89
-matrix is of size 89x89 which is too big to be printed
+matrix is of size 129x129 which is too big to be printed
 dr: 0.1 rmaxTemp: 14 npoints: 89
-matrix is of size 89x89 which is too big to be printed
+matrix is of size 139x139 which is too big to be printed
 dr: 0.1 rmaxTemp: 15 npoints: 89
-matrix is of size 89x89 which is too big to be printed
-dr: 0.1 rmaxTemp: 16 npoints: 89
-matrix is of size 89x89 which is too big to be printed
-dr: 0.1 rmaxTemp: 17 npoints: 89
-matrix is of size 89x89 which is too big to be printed
-dr: 0.1 rmaxTemp: 18 npoints: 89
-matrix is of size 89x89 which is too big to be printed
-dr: 0.1 rmaxTemp: 19 npoints: 89
-matrix is of size 89x89 which is too big to be printed
-dr: 0.1 rmaxTemp: 20 npoints: 89
-matrix is of size 89x89 which is too big to be printed
-dr: 0.1 rmaxTemp: 21 npoints: 89
-matrix is of size 89x89 which is too big to be printed
-dr: 0.1 rmaxTemp: 22 npoints: 89
-matrix is of size 89x89 which is too big to be printed
-dr: 0.1 rmaxTemp: 23 npoints: 89
-matrix is of size 89x89 which is too big to be printed
-dr: 0.1 rmaxTemp: 9 npoints: 89
+matrix is of size 149x149 which is too big to be printed
+dr: 0.1 rmaxTemp: 50 npoints: 89

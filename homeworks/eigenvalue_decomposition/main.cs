@@ -8,15 +8,15 @@ using System.IO;
 class main{
 
 	static double R10(double r){
-		return 2*Exp(-r)*1/(2*Sqrt(PI));
+		return 2*Exp(-r)*1.0/(2*Sqrt(PI));
 	}
 
 	static double R20(double r){
-		return 1/(Sqrt(2))*(1-r/2)*Exp(-r/2)*1/(2*Sqrt(PI));
+		return 1.0/(Sqrt(2))*(1-r/2)*Exp(-r/2)*1.0/(2*Sqrt(PI));
 	}
 
 	static double R30(double r){
-		return 2/(3*Sqrt(3))*(1-2/3*r+2/27*Pow(r,2))*Exp(-r/3)*1/(2*Sqrt(PI));
+		return 2.0/(3*Sqrt(3))*(1-2.0/3*r+2.0/27*Pow(r,2))*Exp(-r/3)*1.0/(2*Sqrt(PI));
 	}
 
 	static void make_data(double start, double stop, Func<double, double> func, string name, double inc = 0.1){
@@ -145,9 +145,9 @@ class main{
 		
 		/* create data for rmax lowest eigen values */
 		toWrite = $""; /* overwrite for empty sting */
-		double rmaxTemp = rmax;
+		double rmaxTemp = 1;
 		for(int m=0; m<15; m++){
-			matrix H = make_ham(dr, rmax);
+			matrix H = make_ham(dr, rmaxTemp);
 			D = H.copy();
 			n = H.size1;
 			V = new matrix(n,n);
@@ -175,21 +175,27 @@ class main{
 		
 		/* træk vektor ud af matrix */
 		{ /* need a new scope */
-		matrix H = make_ham(dr, rmax);
+		rmaxTemp = 50;
+		matrix H = make_ham(dr, rmaxTemp);
 		D = H.copy();
 		n = H.size1;
 		V = new matrix(n,n);
 		V.set_identity();
 		jacobi.decomp(D,V);
-		rmaxTemp = rmax;
 		WriteLine($"dr: {dr} rmaxTemp: {rmaxTemp} npoints: {npoints}");
 		
 		for(int j=0; j<3; j++){
 			toWrite = "";
 			vector r = new vector(n);
 			for(int i=0; i<n; i++){r[i]=dr*(i+1);}  /* laver r vector */
-			for(int i=0; i<n; i++){
-				toWrite += $"{r[i]}\t{V[j][i]/r[i]}\n";
+			if(V[j][0]>0){
+				for(int i=0; i<n; i++){
+					toWrite += $"{r[i]}\t{V[j][i]/r[i]}\n";
+				}
+			}else{
+				for(int i=0; i<n; i++){
+					toWrite += $"{r[i]}\t{-V[j][i]/r[i]}\n";
+				}
 			}
 
 		File.WriteAllText($"eigenfunc{j}.data",toWrite);

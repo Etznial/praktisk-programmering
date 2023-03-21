@@ -1,16 +1,16 @@
 set terminal svg
 set key top right
 set output "Eigenfunc.svg"
-set xlabel "r [Å]"
-set ylabel "ψ"
+set xlabel "Distance r from center of atom"
+set ylabel "Wavefunction"
 set tics out
 set xzeroaxis
 set yzeroaxis
-set title "Wave func"
-plot [0:9] [-0.6:0.6]\
-"eigenfunc0.data" with line linetype 0 title "lowest"\
-,"eigenfunc1.data" with line linetype 1 title "2nd lowest"\
-,"eigenfunc2.data" with line linetype 2 title "3rd lowest"\
-,"R10.data" with line linetype 3 title "R10"\
-,"R20.data" with line linetype 4 title "R20"\
-,"R30.data" with line linetype 5 title "R30"\
+set title "Radial wavefunction for the 3 lowest eigenvalues"
+plot [0:9][-0.1:0.63] \
+ "eigenfunc0.data" with points pt 1 ps 0.5 title "Lowest eigenvalue" \
+,"eigenfunc1.data" with points pt 2 ps 0.5 title "Second lowest eigenvalue" \
+,"eigenfunc2.data" with points pt 3 ps 0.5 title "Third lowest eigenvalue" \
+,"R10.data" with line linetype 1 title "Analytical lowest eigenvalue" \
+,"R20.data" with line linetype 2 title "Analytical second lowest eigenvalue" \
+,"R30.data" with line linetype 3 title "Analytical third lowest eigenvalue" \
