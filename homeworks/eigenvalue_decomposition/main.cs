@@ -8,15 +8,15 @@ using System.IO;
 class main{
 
 	static double R10(double r){
-		return 2*Exp(-r)*1.0/(2*Sqrt(PI));
+		return Pow(2*r*Exp(-r),2);
 	}
 
 	static double R20(double r){
-		return 1.0/(Sqrt(2))*(1-r/2)*Exp(-r/2)*1.0/(2*Sqrt(PI));
+		return Pow(r*1.0/(Sqrt(2))*(1-r/2)*Exp(-r/2),2);
 	}
 
 	static double R30(double r){
-		return 2.0/(3*Sqrt(3))*(1-2.0/3*r+2.0/27*Pow(r,2))*Exp(-r/3)*1.0/(2*Sqrt(PI));
+		return Pow(r*2.0/(3*Sqrt(3))*(1-2.0/3*r+2.0/27*Pow(r,2))*Exp(-r/3),2);
 	}
 
 	static void make_data(double start, double stop, Func<double, double> func, string name, double inc = 0.1){
@@ -175,7 +175,7 @@ class main{
 		
 		/* træk vektor ud af matrix */
 		{ /* need a new scope */
-		rmaxTemp = 50;
+		rmaxTemp = 30;
 		matrix H = make_ham(dr, rmaxTemp);
 		D = H.copy();
 		n = H.size1;
@@ -188,18 +188,14 @@ class main{
 			toWrite = "";
 			vector r = new vector(n);
 			for(int i=0; i<n; i++){r[i]=dr*(i+1);}  /* laver r vector */
-			if(V[j][0]>0){
-				for(int i=0; i<n; i++){
-					toWrite += $"{r[i]}\t{V[j][i]/r[i]}\n";
-				}
-			}else{
-				for(int i=0; i<n; i++){
-					toWrite += $"{r[i]}\t{-V[j][i]/r[i]}\n";
-				}
+			int factor=1;
+			if(V[j][0]<0) factor=-1;
+			for(int i=0; i<n; i++){
+					toWrite += $"{r[i]}\t{Pow(factor*V[j][i]/Sqrt(dr),2)}\n";
+					}
+			File.WriteAllText($"eigenfunc{j}.data",toWrite);
 			}
 
-		File.WriteAllText($"eigenfunc{j}.data",toWrite);
-		}
 		} /* the new scope */
 		
 		make_data(0,9,R10,"R10");

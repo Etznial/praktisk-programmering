@@ -1,0 +1,12 @@
+set terminal svg
+set key top right
+set output "Radium.svg"
+set xlabel "t [d]"
+set ylabel "activity [N]"
+set tics out
+set xzeroaxis
+set yzeroaxis
+set title "Radium activity"
+plot [0:16] [0:150]\
+ "radium.data" with errorbars pt 7 ps 0.5 title "decay"\
+,"radiumfit.data" with lines linetype 3 title "Fit data"\

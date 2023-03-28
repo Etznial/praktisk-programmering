@@ -164,4 +164,4 @@ dr: 0.1 rmaxTemp: 14 npoints: 89
 matrix is of size 139x139 which is too big to be printed
 dr: 0.1 rmaxTemp: 15 npoints: 89
 matrix is of size 149x149 which is too big to be printed
-dr: 0.1 rmaxTemp: 50 npoints: 89
+dr: 0.1 rmaxTemp: 30 npoints: 89
