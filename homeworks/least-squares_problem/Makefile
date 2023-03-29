@@ -7,7 +7,7 @@ main.exe : main.cs matrix.dll QRGS.dll
 	mcs main.cs $(addprefix -reference:,$(filter %.dll,$^)) -target:exe -out:main.exe
 
 Radium.svg : radium.gpi radium.data
-	gnupot $<
+	gnuplot $<
 
 
 DIR = ../../matlib/matrix
