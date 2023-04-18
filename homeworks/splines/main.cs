@@ -75,7 +75,7 @@ class main{
 			double dx1=x[i+2]-x[i+1];
 			c[i]=1/dx*(p[i+1]-p[i]-c[i+1]*dx1);
 		}
-
+		
 		
 		}
 		public double evaluate(double z){/* evaluate the spline */
@@ -98,6 +98,13 @@ class main{
 			double bi=p[i]-c[i]*(x[i+1]-x[i]);
 			sum+=y[i]*(z-x[i])+0.5*bi*Pow(z-x[i],2)+1.0/3*c[i]*Pow(z-x[i],3);
 			return sum;
+		}
+		public double getbi(int i){	
+			double bi=p[i]-c[i]*(x[i+1]-x[i]);
+			return bi;
+		}
+		public double getci(int i){
+			return c[i];
 		}
 	}
 
@@ -163,10 +170,104 @@ class main{
 		}
 		File.WriteAllText("qsplineIntegral.data",toWrite);
 		File.WriteAllText("qsplineDerivative.data",toWriteD);
+			
+		WriteLine("==========[B]==========");
+		WriteLine("Calcullate manually the parameters {bi, ci} of the corresponding quadratic-splines, and compare the results with your quadratic-spline program.");
+		vector x = new vector(5);
+		for(int i=0; i<x.size; i++){
+			x[i]=i+1;
+		}
+		vector y1 = new vector(5);
+		vector y2 = new vector(5);
+		vector y3 = new vector(5);
+		for(int i=0; i<x.size; i++){
+			y1[i]=1;
+		}
+		for(int i=0; i<x.size; i++){
+			y2[i]=i+1;
+		}
+		for(int i=0; i<x.size; i++){
+			y3[i]=Pow(i+1,2);
+		}
+		var qspliney1 = new qspline(x,y1);
+		var qspliney2 = new qspline(x,y2);
+		var qspliney3 = new qspline(x,y3);
 		
+		vector bi1 = new vector(4);
+		vector bi2 = new vector(4);
+		vector bi3 = new vector(4);
+		
+		for(int i=0; i<bi1.size; i++){
+			bi1[i]=qspliney1.getbi(i);
+		}
+		for(int i=0; i<bi2.size; i++){
+			bi2[i]=qspliney2.getbi(i);
+		}
+		for(int i=0; i<bi3.size; i++){
+			bi3[i]=qspliney3.getbi(i);
+		}
+		
+		vector ci1 = new vector(4);
+		vector ci2 = new vector(4);
+		vector ci3 = new vector(4);
 
-
-
-	}	
+		for(int i=0; i<ci1.size; i++){
+			ci1[i]=qspliney1.getci(i);
+		}
+		for(int i=0; i<ci2.size; i++){
+			ci2[i]=qspliney2.getci(i);
+		}
+		for(int i=0; i<ci3.size; i++){
+			ci3[i]=qspliney3.getci(i);
+		}
+		
+		WriteLine("x:");
+		x.print();
+		WriteLine("test with y1");
+		WriteLine("y1:");
+		y1.print();
+		WriteLine("Calculated manually");
+		WriteLine("bi1");
+		WriteLine("\t0\t0\t0\t0");
+		WriteLine("ci1");
+		WriteLine("\t0\t0\t0\t0");
+		WriteLine("");
+		WriteLine("Calculated with program");
+		WriteLine("bi1");
+		bi1.print();
+		WriteLine("ci1");
+		ci1.print();
+		WriteLine("");
+		WriteLine("test with y2");
+		WriteLine("y2:");
+		y2.print();
+		WriteLine("Calculated manually");
+		WriteLine("bi2");
+		WriteLine("\t1\t1\t1\t1");
+		WriteLine("ci2");
+		WriteLine("\t0\t0\t0\t0");
+		WriteLine("");
+		WriteLine("Calculated with program");
+		WriteLine("bi2");
+		bi2.print();
+		WriteLine("ci2");
+		ci2.print();
+		WriteLine("");
+		WriteLine("test with y3");
+		WriteLine("y3:");
+		y3.print();
+		WriteLine("Calculated manually");
+		WriteLine("bi3");
+		WriteLine("\t2\t4\t6\t8");
+		WriteLine("ci3");
+		WriteLine("\t1\t1\t1\t1");
+		WriteLine("");
+		WriteLine("Calculated with program");
+		WriteLine("bi3");
+		bi3.print();
+		WriteLine("ci3");
+		ci3.print();
+	
+	
+	}
 }// class
-

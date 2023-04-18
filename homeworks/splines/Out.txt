@@ -1,1 +1,49 @@
 Integralsum of lin spline: -7.76165807014874
+==========[B]==========
+Calcullate manually the parameters {bi, ci} of the corresponding quadratic-splines, and compare the results with your quadratic-spline program.
+x:
+         1          2          3          4          5 
+test with y1
+y1:
+         1          1          1          1          1 
+Calculated manually
+bi1
+	0	0	0	0
+ci1
+	0	0	0	0
+
+Calculated with program
+bi1
+         0          0          0          0 
+ci1
+         0          0          0          0 
+
+test with y2
+y2:
+         1          2          3          4          5 
+Calculated manually
+bi2
+	1	1	1	1
+ci2
+	0	0	0	0
+
+Calculated with program
+bi2
+         1          1          1          1 
+ci2
+         0          0          0          0 
+
+test with y3
+y3:
+         1          4          9         16         25 
+Calculated manually
+bi3
+	2	4	6	8
+ci3
+	1	1	1	1
+
+Calculated with program
+bi3
+         2          4          6          8 
+ci3
+         1          1          1          1 
