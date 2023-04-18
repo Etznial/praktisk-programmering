@@ -1,0 +1,1 @@
+Integralsum of lin spline: -7.76165807014874

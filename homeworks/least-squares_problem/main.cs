@@ -66,7 +66,7 @@ class main{
 	
 		
 		WriteLine("====================[A]====================");
-
+		WriteLine("c1 and c2");
 		Func<double, double>[] fs = {f1,f2};
 		var solution = lsfit(fs,t,logAct,logErrAct).Item1;
 		solution.print();
@@ -90,7 +90,7 @@ class main{
 		WriteLine("Covariance matrix");
 		S.print();
 		double uncer = Log(2)/Pow(solution[1],2)*Sqrt(S[1][1]); /* gange på hældningen */
-		WriteLine($"halflife and its uncertainty");
+		WriteLine($"halflife and its uncertainty in days");
 		WriteLine($"{halflife} +-{uncer}");
 
 

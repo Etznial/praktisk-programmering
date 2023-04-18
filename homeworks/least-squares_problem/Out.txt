@@ -1,4 +1,5 @@
 ====================[A]====================
+c1 and c2
       4.95      -0.17 
 halflife: 4.08004641904341 [days]
 halflife of radium is 3.6 days
@@ -7,5 +8,5 @@ Covariance matrix
 
    0.00115  -0.000178 
  -0.000178   4.83e-05 
-halflife and its uncertainty
+halflife and its uncertainty in days
 4.08004641904341 +-0.166914715082983
