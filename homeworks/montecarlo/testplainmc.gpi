@@ -1,0 +1,15 @@
+set terminal svg
+set key top right
+set output "Testplainmc.svg"
+set xlabel "N"
+set ylabel "Error"
+set tics out
+set xzeroaxis
+set yzeroaxis
+set title "Test of plainmc with cos x + cos y from x -PI to PI and y -PI to PI"
+f(x)=a/(sqrt(x))
+fit f(x) "coscosIt.data" using 1:2 via a
+plot [10:1e4] [0:11]\
+"coscosIt.data" with points pt 7 ps 0.5 title "Error"\
+,f(x) title "fit to data" linewidth 2\
+#,"linSpline.data" with lines linetype 1 title "linSpline"\

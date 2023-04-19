@@ -1,6 +1,6 @@
-default : Out.txt
+default : Out.txt Testplainmc.svg
 
-Out.txt : main.exe
+Out.txt coscosIt.data : main.exe
 	mono main.exe > Out.txt -target:$@
 
 main.exe : main.cs matrix.dll
@@ -9,6 +9,9 @@ main.exe : main.cs matrix.dll
 DIR = ../../matlib/matrix
 matrix.dll : $(DIR)/vector.cs $(DIR)/matrix.cs
 	mcs -target:library -out:$@ $^
+
+Testplainmc.svg : testplainmc.gpi coscosIt.data
+	gnuplot $<
 
 #QRGS.dll : QRGS.cs matrix.dll
 #	mcs QRGS.cs -target:library -reference:matrix.dll -out:$@
