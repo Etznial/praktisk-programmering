@@ -11,5 +11,5 @@ f(x)=a/(sqrt(x))
 fit f(x) "coscosIt.data" using 1:2 via a
 plot [10:1e4] [0:11]\
 "coscosIt.data" with points pt 7 ps 0.5 title "Error"\
-,f(x) title "fit to data" linewidth 2\
+,f(x) title "fit to data, with 1/Sqrt(N)" linewidth 2\
 #,"linSpline.data" with lines linetype 1 title "linSpline"\

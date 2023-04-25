@@ -1,0 +1,17 @@
+set terminal svg
+set key top right
+set output "Testqrmc.svg"
+set xlabel "N"
+set ylabel "Error"
+set tics out
+set xzeroaxis
+set yzeroaxis
+set logscale xy
+set title "Test of qrmc and plainmc with function cos x + cos y from x -PI to PI and y -PI to PI"
+#f(x)=a/(sqrt(x))
+#fit f(x) "QRMCcoscosIt.data" using 1:2 via a
+plot [50:1e4] [0.0001:10]\
+ "QRMCcoscosIt.data" with points pt 7 ps 0.5 title "qrmcError"\
+,"coscosIt.data" with points pt 7 ps 0.5 title "plainmcError"\
+#,f(x) title "fit to data, with 1/Sqrt(N)" linewidth 2\
+#,"linSpline.data" with lines linetype 1 title "linSpline"\

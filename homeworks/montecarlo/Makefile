@@ -1,6 +1,6 @@
-default : Out.txt Testplainmc.svg
+default : Out.txt Testplainmc.svg Testqrmc.svg
 
-Out.txt coscosIt.data : main.exe
+Out.txt coscosIt.data QRMCcoscosIt.data : main.exe
 	mono main.exe > Out.txt -target:$@
 
 main.exe : main.cs matrix.dll
@@ -11,6 +11,9 @@ matrix.dll : $(DIR)/vector.cs $(DIR)/matrix.cs
 	mcs -target:library -out:$@ $^
 
 Testplainmc.svg : testplainmc.gpi coscosIt.data
+	gnuplot $<
+
+Testqrmc.svg : testqrmc.gpi QRMCcoscosIt.data coscosIt.data
 	gnuplot $<
 
 #QRGS.dll : QRGS.cs matrix.dll

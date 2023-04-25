@@ -3,6 +3,7 @@ using static System.Console;
 using static System.Math;
 using static matrix;
 using System.IO;
+using System.Diagnostics;
 
 class main{
 	public static (double,double) plainmc(Func<vector,double> f,vector a,vector b,int N){
@@ -21,14 +22,29 @@ class main{
 
 	public static (double,double) qrmc(Func<vector,double> f, vector a, vector b, int N){
 		int dim=a.size; double V=1; for(int i=0;i<dim;i++)V*=b[i]-a[i];
-		double sum=0,sum2=0;
-		var x=new vector(dim);
+		double sum0=0,sum1=0;
+		var x0=new vector(dim);
+		var x1=new vector(dim);
+		var h0=new vector(dim);
+		var h1=new vector(dim);
 		for(int i=0;i<N;i++){
-			/*here*/
-			double fx=f(x); sum+=fx; sum2+=fx*fx;
+			halton(i,dim,h0,0);
+			for(int k=0;k<dim;k++)x0[k]=a[k]+h0[k]*(b[k]-a[k]);
+			halton(i,dim,h1,dim);
+			for(int k=0;k<dim;k++)x1[k]=a[k]+h1[k]*(b[k]-a[k]);
+			double fx0=f(x0); sum0+=fx0; 
+			double fx1=f(x1); sum1+=fx1;
 		}
-		double mean=sum/N, sigma=Sqrt(sum2/N-mean*mean);
-		var result=(mean*V,sigma*V/Sqrt(N));
+		double mean0=sum0/N;
+		double mean1=sum1/N;
+		double inte0=mean0*V;
+		double inte1=mean1*V;
+		double tempSum=0;
+		double mean01=(inte0+inte1)/2;
+		tempSum+=Pow(inte0-mean01,2);
+		tempSum+=Pow(inte1-mean01,2);
+		double sigma=Sqrt(1.0/2*tempSum);
+		var result=(mean01,sigma/Sqrt(2));
 		return result;
 	}
 
@@ -38,15 +54,16 @@ class main{
 		while(n>0){
 			q+=(n%b)*bk; 
 			n/=b; 
-			bk/b;
+			bk/=b;
 		}
 		return q;
 	}
 
-	public static void halton(int n, int d, vector x){
-		int[] basis={2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61};
-		int maxd=basis.size()/d;
-		assert(d<=maxd); for(int i=0; i<d; i++) x[i]=corput(n,basis[i]);
+	public static void halton(int n, int d, vector x, int k=0){
+		int[] bs={2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61};
+		int maxd=bs.Length/d;
+		Debug.Assert(d<=maxd,"dimension is too big, need larger basis"); 
+		for(int i=0; i<d; i++) x[i]=corput(n,bs[i+k]);
 	}
 	
 	public static void Main(){
@@ -67,18 +84,28 @@ class main{
 		WriteLine("Test integral of [1-cos(x)cos(y)cos(z)]**(-1)/PI**3, result should approximatly be:");
 		WriteLine("1.3932039296856768591842462603255");
 		WriteLine($"result of plainmc: {plainmc(coscoscos,vbccc,veccc,N)}");
-		
+		WriteLine("for referance see plot Testplainmc.svg");
 		//Time to make graph
-		int beginIt = (int)1e1;
-		int endIt = (int)1e4;
+		int beginIt = (int)50;
+		int endIt = (int)1e5;
 		string toWrite="";
-		for(int n=beginIt; n<endIt; n+=10){
+		for(int n=beginIt; n<endIt; n+=beginIt+n/10){
 			(double integral, double error) = plainmc(cossin,vbcs,vecs,n);
 			toWrite+=$"{n}\t{error}\n";
 		}
-
 		File.WriteAllText("coscosIt.data",toWrite);
 		
+		WriteLine("");
+		WriteLine("====================[B]====================");
+		WriteLine("Estimate the error by using two different sequences");
+		//Time to make graph
+		toWrite="";
+		for(int n=beginIt; n<endIt; n+=beginIt+n/10){
+			(double integral, double error) = qrmc(cossin,vbcs,vecs,n);
+			toWrite+=$"{n}\t{error}\n";
+		}
+		File.WriteAllText("QRMCcoscosIt.data",toWrite);
+		WriteLine("The compareson of the scaling of the errors of plainmc and qrmc is done in the plot Testqrmc.svg");
 
 
 

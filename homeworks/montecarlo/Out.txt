@@ -1,6 +1,11 @@
 ====================[A]====================
 Test integral of cos x + sin y with limits -pi to pi for both x and y, the integral is calculated to 0 analytically
-result of plainmc: (0.0307111631905712, 0.0394328473817597)
+result of plainmc: (0.0015032593473475, 0.039494454712332)
 Test integral of [1-cos(x)cos(y)cos(z)]**(-1)/PI**3, result should approximatly be:
 1.3932039296856768591842462603255
-result of plainmc: (1.38524039825914, 0.00568152619376737)
+result of plainmc: (1.40901068715625, 0.020964687946062)
+for referance see plot Testplainmc.svg
+
+====================[B]====================
+Estimate the error by using two different sequences
+The compareson of the scaling of the errors of plainmc and qrmc is done in the plot Testqrmc.svg
