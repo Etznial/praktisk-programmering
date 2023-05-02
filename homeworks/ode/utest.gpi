@@ -1,0 +1,19 @@
+set terminal svg
+set key bottom right
+set output "Utest.svg"
+set xlabel ""
+set ylabel ""
+set tics out
+set xzeroaxis
+set yzeroaxis
+set size ratio -1
+#set logscale xy
+set title "Pendulum differential assignment B"
+#f(x)=sin(x)
+#fit f(x) "QRMCcoscosIt.data" using 1:2 via a
+plot [-2.2:2.2] [-2.2:2.2]\
+ "u1.data" using (1/$2)*cos($1):(1/$2)*sin($1) with lines linewidth 3 title "newton cir"\
+,"u2.data" using (1/$2)*cos($1):(1/$2)*sin($1) with lines linewidth 3 title "newton elip"\
+,"u3.data" using (1/$2)*cos($1):(1/$2)*sin($1) with lines title "general rel"\
+#,f(x) title "sin(x)" linewidth 2\
+#,"linSpline.data" with lines linetype 1 title "linSpline"\
