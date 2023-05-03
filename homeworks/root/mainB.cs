@@ -101,7 +101,6 @@ class main{
 	}
 
 	public static void Main(){
-		
 		double a=0;
 		double b=10;
 		genlist<vector> ylist = new genlist<vector>();
@@ -132,11 +131,11 @@ class main{
 		
 
 		vector ya1 = new vector(2); ya1[0]=1; ya1[1]=0;
-		driver(u,a_phi,ya1,b_phi, xlist:xlist1, ylist:ylist1);
+		vector y1=driver(u,a_phi,ya1,b_phi, xlist:xlist1, ylist:ylist1);
 		vector ya2 = new vector(2); ya2[0]=1; ya2[1]=-0.5;
-		driver(u,a_phi,ya2,b_phi, xlist:xlist1, ylist:ylist2);
+		vector y2=driver(u,a_phi,ya2,b_phi, xlist:xlist1, ylist:ylist2);
 		vector ya3 = new vector(2); ya3[0]=1; ya3[1]=-0.5; // use with eps = 0.01
-		driver(u1,a_phi,ya3,b_phi, xlist:xlist1, ylist:ylist3);
+		vector y3=driver(u1,a_phi,ya3,b_phi, xlist:xlist1, ylist:ylist3);
 		string toWrite1="";
 		string toWrite2="";
 		string toWrite3="";
