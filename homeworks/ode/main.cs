@@ -71,7 +71,7 @@ class main{
 		double h=0.5;
 		vector y=new vector(2); y[0]=0; y[1]=1;
 		for(int i = 0; i<b; i++){
-			(vector yh,vector er) = rkstep12(f,h*i,y,h);
+			(vector yh,_) = rkstep12(f,h*i,y,h);
 			toWriterk+=$"{i*h}\t{y[0]}\t{y[1]}\n";
 			y=yh;
 		}
