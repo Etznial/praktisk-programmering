@@ -8,7 +8,7 @@ set xzeroaxis
 set yzeroaxis
 set size ratio -1
 #set logscale xy
-set title "Pendulum differential assignment B"
+set title "Orbits calculated in Newtonian physics and general relativity"
 #f(x)=sin(x)
 #fit f(x) "QRMCcoscosIt.data" using 1:2 via a
 plot [-2.2:2.2] [-2.2:2.2]\
