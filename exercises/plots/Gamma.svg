@@ -111,10 +111,10 @@
 </g>
 <g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">
 </g>
-	<g id="gnuplot_plot_1" ><title>theory</title>
+	<g id="gnuplot_plot_1" ><title>gamma</title>
 <g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">
 	<g transform="translate(498.09,381.30)" stroke="none" fill="black" font-family="Arial" font-size="12.00"  text-anchor="end">
-		<text><tspan font-family="Arial" >theory</tspan></text>
+		<text><tspan font-family="Arial" >gamma</tspan></text>
 	</g>
 </g>
 <g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">
@@ -183,10 +183,10 @@
 		L502.01,79.08 L502.79,76.21 L503.58,73.27 L504.36,70.27 L505.14,67.19 L505.93,64.05 L506.71,60.84 L507.49,57.55
 		L508.28,54.18 L508.31,54.01  '/></g>
 	</g>
-	<g id="gnuplot_plot_2" ><title>experiment</title>
+	<g id="gnuplot_plot_2" ><title>exact</title>
 <g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">
 	<g transform="translate(498.09,399.30)" stroke="none" fill="black" font-family="Arial" font-size="12.00"  text-anchor="end">
-		<text><tspan font-family="Arial" >experiment</tspan></text>
+		<text><tspan font-family="Arial" >exact</tspan></text>
 	</g>
 </g>
 <g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">

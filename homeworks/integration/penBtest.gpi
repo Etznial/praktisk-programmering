@@ -1,0 +1,17 @@
+set terminal svg
+set key top right
+set output "PenBtest.svg"
+set xlabel "t"
+set ylabel ""
+set tics out
+set xzeroaxis
+set yzeroaxis
+#set logscale xy
+set title "Pendulum differential assignment B"
+#f(x)=sin(x)
+#fit f(x) "QRMCcoscosIt.data" using 1:2 via a
+plot [0:10] [-4.1:3.5]\
+ "pen.data" with lines linetype 1 linewidth 2 title "theta"\
+,"penB.data" with points pt 7 ps 1 title "penB"\
+#,f(x) title "sin(x)" linewidth 2\
+#,"linSpline.data" with lines linetype 1 title "linSpline"\

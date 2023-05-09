@@ -11,6 +11,7 @@ public static class main{
 
 	public static void Main(){
 		vec u = new vec(1,2,3);
+		vec u_clone = new vec(1,2,3);
 		vec v = new vec(2,3,4);
 		u.print("u = ");
 		v.print("v = ");
@@ -25,6 +26,9 @@ public static class main{
 		(5*x).print("5*x = ");
 		WriteLine($"u.cross(v) = {u.cross(v)}");
 		WriteLine($"u.norm() = {u.norm()}");
-	
+		/* testing the approx method */
+		WriteLine($"u.approx(u_clone) = {u.approx(u_clone)}");
+		WriteLine($"u.approx(v) = {u.approx(v)}");
+
 	}
 }

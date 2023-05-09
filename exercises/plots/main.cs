@@ -15,6 +15,12 @@ static void Main(string[] args){
 					WriteLine($"{x} {sfuns.erf(x)}");
 					}
 				} 
+			
+			if(words[1] == "lngamma"){
+		 		for(double x=0+1.0/128;x<=10;x+=1.0/64){
+					WriteLine($"{x} {sfuns.lngamma(x)}");
+					}
+				} 
 		} 
 	}
 }

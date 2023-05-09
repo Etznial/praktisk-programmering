@@ -9,6 +9,6 @@ set yzeroaxis
 #set samples 10000
 set title "Gamma fuction"
 plot [-5:5] [-5:5]\
- "gamma.data" with lines linetype 1 title "theory" \
-,"factorials.data" using ($1+1):($2) with points pt 4 title "experiment" \
+ "gamma.data" with lines linetype 1 title "gamma" \
+,"factorials.data" using ($1+1):($2) with points pt 4 title "exact" \
 #,gamma(x) with lines linetype 2 title "built in gamma"

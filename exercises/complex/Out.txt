@@ -1,12 +1,27 @@
 cmath.sqrt(-1) = 6.12e-17+1i
 Awnser from Wolframalpha: i
+cmath.sqrt(-1).approx(new complex(0,1)) = True
+
 cmath.sqrt(i) = 0.707+0.707i
-Awnser from Wolframalpha: 0.707 + 0.707i
+Awnser from Wolframalpha: 1/sqrt(2) + i/sqrt(2)
+cmath.sqrt(i).approx(new complex(1/cmath.sqrt(2), i/cmath.sqrt(2))) = True
+
 cmath.exp(cmath.I) 0.54+0.841i
-Awnser from Wolframalpha: 0.540 + 0.841i
+Awnser from Wolframalpha: cos(1) + sin(1)i
+cmath.exp(cmath.I).approx(new complex(Cos(1), Sin(1))) = True
+
 cmath.exp(cmath.I*PI) -1+1.22e-16i
 Awnser from Wolframalpha: -1
-0+1.57i
-Awnser from Wolframalpha: 1.57i
-0+11.5i
-Awnser from Wolframalpha: 11.5i
+cmath.exp(cmath.I*PI).approx(-1) = True
+
+cmath.pow(cmath.I,cmath.I) = 0.208+0i
+Awnser from Wolframalpha: Exp(-PI/2)
+cmath.pow(cmath.I,cmath.I).approx(new complex(Exp(-PI/2),0)) = True
+
+cmath.log(cmath.I) = 0+1.57i
+Awnser from Wolframalpha: I*PI/2
+cmath.log(cmath.I).approx(new complex(0,PI/2)) = True
+
+cmath.sin(cmath.I*PI) = 0+11.5i
+Awnser calculated: i/2*(Exp(PI)-Exp(-PI))
+cmath.sin(cmath.I*PI).approx(new complex(0,1.0/2*(Exp(PI)-Exp(-PI)))) = True

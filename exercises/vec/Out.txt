@@ -9,3 +9,5 @@ x+5 = 6.23
 5*x = 6.15
 u.cross(v) = (-1 2 -1)
 u.norm() = 3.74165738677394
+u.approx(u_clone) = True
+u.approx(v) = False

@@ -31,8 +31,7 @@ public class QRGS{
 	public static double det(matrix R){ /* R skal være decomposed inden man indsætter den */
 		int m = R.size2;
 		double tempSum = 1;
-		for(int i=0; i<m; i++){
-			tempSum = tempSum*R[i][i];
+
 		}
 		return tempSum;
 	}

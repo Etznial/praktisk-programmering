@@ -1,0 +1,14 @@
+set terminal svg 
+set key top left
+set output "Lngamma.svg"
+set xlabel "x"
+set ylabel "y"
+set tics out
+set xzeroaxis	
+set yzeroaxis
+#set samples 10000
+set title "lngamma fuction"
+plot [0:10] [-1:10]\
+ "lngamma.data" with lines linetype 1 title "lngamma" \
+,"lnfactorials.data" using ($1+1):($2) with points pt 4 title "exact" \
+#,gamma(x) with lines linetype 2 title "built in gamma"

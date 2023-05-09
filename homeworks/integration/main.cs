@@ -6,10 +6,6 @@ using System.IO;
 using System.Diagnostics;
 
 class main{
-	static vector newton(Func<vector,vector>f, vector x, double eps=1e-2){
-		
-	
-	}
 		
 
 	public static void Main(){
