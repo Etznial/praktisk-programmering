@@ -1,0 +1,22 @@
+test integrate for sqrt(x)		from 0 to 1, should give 2/3:	True
+test integrate for 1/sqrt(x)		from 0 to 1, should give 2:	True
+test integrate for 4*sqrt(1-x^2)	from 0 to 1, should give π:	True
+test integrate for Log(x)/sqrt(x)	from 0 to 1, should give -4:	True
+
+Test of approximation of erf from plots with table values and new and improved erf func with integrater with delta=1e-9 and eps=1e-9
+for z=1 
+table value:	0.842700793
+approximation:	0.84270068974759
+improved erf:	0.842700792949814
+
+for z=2 
+table value:	0.995322265
+approximation:	0.995322139581219
+improved erf:	0.995322265036378
+
+for z=3 
+table value:	0.999977910
+approximation:	0.999977894851102
+improved erf:	0.999977909517184
+
+we can see from the above values that the impoved erf is more accurate than the approximate erf with a delta and eps of 1e-9
