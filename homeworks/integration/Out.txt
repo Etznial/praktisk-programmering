@@ -1,3 +1,4 @@
+=====[A]=====
 test integrate for sqrt(x)		from 0 to 1, should give 2/3:	True
 test integrate for 1/sqrt(x)		from 0 to 1, should give 2:	True
 test integrate for 4*sqrt(1-x^2)	from 0 to 1, should give π:	True
@@ -20,3 +21,12 @@ approximation:	0.999977894851102
 improved erf:	0.999977909517184
 
 we can see from the above values that the impoved erf is more accurate than the approximate erf with a delta and eps of 1e-9
+
+=====[B]=====
+delta = 0.001, eps = 0.001
+test of integrate for 1/sqrt(x)			from 0 to 1, should give 2:	integral: 1.99996150007805	count: 8572
+test of clenshawIntegrate for 1/sqrt(x)		from 0 to 1, should give 2:	integral: 1.99999201046432	count: 16
+test of scypi quad for 1/sqrt(x)		from 0 to 1, should give 2:	integral: 1.9999999999999984	count: 231
+test of integrate for Log(x)/sqrt(x)		from 0 to 1, should give -4:	integral: -3.99991705899915	count: 8604
+test of clenshawIntegrate for Log(x)/sqrt(x)	from 0 to 1, should give -4:	integral: -3.99987385646141	count: 96
+test of scypi quad for Log(x)/sqrt(x)		from 0 to 1, should give -4:	integral: -4.000000000000085	count: 315

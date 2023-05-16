@@ -6,6 +6,8 @@ Out.txt : main.exe
 main.exe : main.cs matrix.dll genlist.dll sfuns.dll
 	mcs main.cs $(addprefix -reference:,$(filter %.dll,$^)) -target:exe -out:main.exe
 
+run : 
+	python3.10 mainpy.py 
 
 DIR1 = ../../matlib/matrix
 matrix.dll : $(DIR1)/vector.cs $(DIR1)/matrix.cs
