@@ -1,9 +1,9 @@
 ====================[A]====================
 Test integral of cos x + sin y with limits -pi to pi for both x and y, the integral is calculated to 0 analytically
-result of plainmc: (-0.0346463396391792, 0.0394546581650434)
+result of plainmc: (-0.01096724165558, 0.0394480567847193)
 Test integral of [1-cos(x)cos(y)cos(z)]**(-1)/PI**3, result should approximatly be:
 1.3932039296856768591842462603255
-result of plainmc: (1.39743040682455, 0.00892320204124215)
+result of plainmc: (1.38334942356431, 0.00494508542643032)
 for referance see plot Testplainmc.svg
 
 ====================[B]====================

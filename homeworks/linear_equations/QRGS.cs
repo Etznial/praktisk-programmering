@@ -23,18 +23,25 @@ public class QRGS{
 			for(int k=i+1; k<n; k++){
 				tempSum += R[k][i]*solutions[k];
 			}
-		solutions[i]=1.0/R[i][i]*(b[i]-tempSum);
+			solutions[i]=1.0/R[i][i]*(b[i]-tempSum);
 		}
 		return solutions; 
 	}
-		
-	public static double det(matrix R){ /* R skal være decomposed inden man indsætter den */
-		int m = R.size2;
-		double tempSum = 1;
-
-		}
-		return tempSum;
+	
+	public static vector solveG(matrix A, vector b){
+		int n = A.size1;
+		matrix Q = A.copy();
+		matrix R = new matrix(n,n);
+		decomp(Q,R);
+		var QTb = Q.transpose()*b;
+		return solve(Q,R,QTb);
 	}
+	
+//	public static double det(matrix R){ /* R skal være decomposed inden man indsætter den */
+//		int m = R.size2;
+//		double tempSum = 1;
+//		return tempSum;
+//	}
 
 	public static matrix inverse(matrix Q, matrix R){
 		int n = R.size1;

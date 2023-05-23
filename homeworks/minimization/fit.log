@@ -2022,33 +2022,3 @@ variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00385699
 Final set of parameters            Asymptotic Standard Error
 =======================            ==========================
 a               = 40.2509          +/- 0.2494       (0.6197%)
-
-
-*******************************************************************************
-Wed May 17 10:17:26 2023
-
-
-FIT:    data read from "coscosIt.data" using 1:2
-        format = x:z
-        #datapoints = 55
-        residuals are weighted equally (unit weight)
-
-function used for fitting: f(x)
-	f(x)=a/(sqrt(x))
-fitted parameters initialized with current variable values
-
-iter      chisq       delta/lim  lambda   a            
-   0 8.7867351128e+01   0.00e+00  3.36e-02    1.000000e+00
-   3 8.8532265370e-02  -1.04e-03  3.36e-05    3.862981e+01
-
-After 3 iterations the fit converged.
-final sum of squares of residuals : 0.0885323
-rel. change during last iteration : -1.04479e-08
-
-degrees of freedom    (FIT_NDF)                        : 54
-rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0404906
-variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00163949
-
-Final set of parameters            Asymptotic Standard Error
-=======================            ==========================
-a               = 38.6298          +/- 0.1626       (0.421%)
