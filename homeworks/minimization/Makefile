@@ -1,4 +1,4 @@
-default : Out.txt Erf.svg
+default : Out.txt
 
 Out.txt : main.exe
 	mono main.exe > Out.txt -target:$@

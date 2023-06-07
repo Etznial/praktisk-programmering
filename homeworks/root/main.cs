@@ -14,27 +14,32 @@ class main{
 		fcx.print("fcx=");
 		int m = fcx.size; // rows
 		int n = cx.size; // columbs
+		double lambda;
+		double dxk;
 		if(n!=m) throw new ArgumentException($"n must be equal to m to have a square matrix, they are atm n={n} and m={m}");
 		matrix J = new matrix(n,m);
 		vector step = new vector(n);
 		while(fcx.norm()>eps){
+			
 			for(int i=0;i<m;i++){ // it rows
 				for(int k=0;k<n;k++){ // it columbs
 					//if(Abs(x[i]) < Pow(2,-26)) x[i] = Pow(2,-24);
-					double dxk = Abs(cx[k])*Pow(2,-26);
+					dxk = Abs(cx[k])*Pow(2,-26);
 					cx[k]+=dxk;
 					vector ff=f(cx);
 					J[i,k]=(ff[i]-fcx[i])/dxk;
 					cx[k]-=dxk;
 				}	
 			}
+			
 			step = QRGS.solveG(J,-fcx);
 			step.print("step=");
 			var mismatch=J*step+fcx;
 			mismatch.print("skal være nul");
-			double lambda = 1;
+			lambda = 1;
 			vector z=cx+step*lambda;	
 			vector fz=f(z);
+			
 			do{
 				if(fz.norm()<(1-lambda/2)*fcx.norm())break;
 				else{
@@ -55,7 +60,7 @@ class main{
 		}
 		return cx;
 	}
-	/*
+	
 	static vector newtonTest(Func<vector,vector> f, vector x, double eps=1e-2){
 		int n = x.size;
 		int m = f(x).size;
@@ -74,13 +79,19 @@ class main{
 				}
 			}
 			step = QRGS.solveG(J,-f(x));
+			step.print("step=");
+			var mismatch=J*step+f(x);
+			mismatch.print("skal være nul");
 			lambda = 1;
-			while(f(x+step).norm() > (1.0-lambda*0.5)*f(x).norm() && lambda > 1.0/32.0) lambda/=2;
+			while(f(x+step).norm() > (1.0-lambda*0.5)*f(x).norm() && lambda > 1.0/32.0) {
+				WriteLine("backtracking...");
+				lambda/=2;
+			} 
 			x += lambda*step;
 		}
 		return x;
 	}
-	*/
+	
 	
 	static public vector f(vector v){
 		it++;
@@ -99,10 +110,10 @@ class main{
 		
 
 	public static void Main(){
-		
+		/*
 		WriteLine("newton test");
 		vector start;
-		start = new vector(-5,7);
+		start = new vector(-10,10);
 		it=0;
 		newton(f,start).print();
 		WriteLine($"number of times func has been called: {it}");
@@ -116,7 +127,7 @@ class main{
 		toWrite1+=$"{xlist2[i]}\t{ylist2[i][1]}\n";
 		File.WriteAllText("pen1.data",toWrite1);
 		*/
-		/*
+		
 		WriteLine("newton test");
 		vector start;
 		start = new vector(-5,7);
@@ -127,7 +138,7 @@ class main{
 		it=0;
 		newtonTest(test1,start,eps:1e-5).print();
 		WriteLine($"number of times func has been called: {it}");
-		*/
+		
 	}	
 }// class
 
