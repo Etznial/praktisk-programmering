@@ -2022,3 +2022,299 @@ variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00385699
 Final set of parameters            Asymptotic Standard Error
 =======================            ==========================
 a               = 40.2509          +/- 0.2494       (0.6197%)
+
+
+*******************************************************************************
+Fri Jun  9 10:50:51 2023
+
+
+FIT:    data read from 'higgs.data' using 1:1:1
+        format = x:z:s
+        #datapoints = 30
+function used for fitting: f(x)
+	f(x)=k/((x**2-M**2)**2+M**2*G**2)
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   k             M             G            
+   0 2.9999999998e+01   0.00e+00  2.46e-11    1.000000e+00   1.000000e+00   1.000000e+00
+   1 2.9999986938e+01  -4.35e-01  2.46e-09    1.742867e+06   5.168536e+02   9.799158e-01
+
+After 1 iterations the fit converged.
+final sum of squares of residuals : 30
+rel. change during last iteration : -4.35332e-07
+
+degrees of freedom    (FIT_NDF)                        : 27
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 1.05409
+variance of residuals (reduced chisquare) = WSSR/ndf   : 1.11111
+p-value of the Chisq distribution (FIT_P)              : 0.314154
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+k               = 1.74287e+06      +/- 5.334e+15    (3.06e+11%)
+M               = 516.854          +/- 7.392e+11    (1.43e+11%)
+G               = 0.979916         +/- 3.622e+14    (3.696e+16%)
+
+correlation matrix of the fit parameters:
+                k      M      G      
+k               1.000 
+M               1.000  1.000 
+G              -1.000 -1.000  1.000 
+
+
+*******************************************************************************
+Fri Jun  9 10:53:16 2023
+
+
+FIT:    data read from 'higgs.data' using 1:1:1
+        format = x:z:s
+        #datapoints = 30
+function used for fitting: f(x)
+	f(x)=k/((x**2-M**2)**2+M**2*G**2)
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   k             M             G            
+   0 2.9999999998e+01   0.00e+00  2.46e-11    1.000000e+00   1.000000e+00   1.000000e+00
+   1 2.9999986938e+01  -4.35e-01  2.46e-09    1.742867e+06   5.168536e+02   9.799158e-01
+
+After 1 iterations the fit converged.
+final sum of squares of residuals : 30
+rel. change during last iteration : -4.35332e-07
+
+degrees of freedom    (FIT_NDF)                        : 27
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 1.05409
+variance of residuals (reduced chisquare) = WSSR/ndf   : 1.11111
+p-value of the Chisq distribution (FIT_P)              : 0.314154
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+k               = 1.74287e+06      +/- 5.334e+15    (3.06e+11%)
+M               = 516.854          +/- 7.392e+11    (1.43e+11%)
+G               = 0.979916         +/- 3.622e+14    (3.696e+16%)
+
+correlation matrix of the fit parameters:
+                k      M      G      
+k               1.000 
+M               1.000  1.000 
+G              -1.000 -1.000  1.000 
+
+
+*******************************************************************************
+Fri Jun  9 10:56:08 2023
+
+
+FIT:    data read from 'higgs.data' using 1:1:1
+        format = x:z:s
+        #datapoints = 30
+function used for fitting: f(x)
+	f(x)=k/((x**2-M**2)**2+M**2*G**2)
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   k             M             G            
+   0 2.9999999998e+01   0.00e+00  2.46e-11    1.000000e+00   1.000000e+00   1.000000e+00
+   1 2.9999986938e+01  -4.35e-02  2.46e-09    1.742867e+06   5.168536e+02   9.799158e-01
+
+After 1 iterations the fit converged.
+final sum of squares of residuals : 30
+rel. change during last iteration : -4.35332e-07
+
+degrees of freedom    (FIT_NDF)                        : 27
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 1.05409
+variance of residuals (reduced chisquare) = WSSR/ndf   : 1.11111
+p-value of the Chisq distribution (FIT_P)              : 0.314154
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+k               = 1.74287e+06      +/- 5.334e+15    (3.06e+11%)
+M               = 516.854          +/- 7.392e+11    (1.43e+11%)
+G               = 0.979916         +/- 3.622e+14    (3.696e+16%)
+
+correlation matrix of the fit parameters:
+                k      M      G      
+k               1.000 
+M               1.000  1.000 
+G              -1.000 -1.000  1.000 
+
+
+*******************************************************************************
+Fri Jun  9 10:57:59 2023
+
+
+FIT:    data read from 'higgs.data' using 1:1:1
+        format = x:z:s
+        #datapoints = 30
+function used for fitting: f(x)
+	f(x)=k/((x**2-M**2)**2+M**2*G**2)
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   k             M             G            
+   0 2.9999999998e+01   0.00e+00  2.46e-11    1.000000e+00   1.000000e+00   1.000000e+00
+   1 2.9999986938e+01  -4.35e-02  2.46e-09    1.742867e+06   5.168536e+02   9.799158e-01
+
+After 1 iterations the fit converged.
+final sum of squares of residuals : 30
+rel. change during last iteration : -4.35332e-07
+
+degrees of freedom    (FIT_NDF)                        : 27
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 1.05409
+variance of residuals (reduced chisquare) = WSSR/ndf   : 1.11111
+p-value of the Chisq distribution (FIT_P)              : 0.314154
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+k               = 1.74287e+06      +/- 5.334e+15    (3.06e+11%)
+M               = 516.854          +/- 7.392e+11    (1.43e+11%)
+G               = 0.979916         +/- 3.622e+14    (3.696e+16%)
+
+correlation matrix of the fit parameters:
+                k      M      G      
+k               1.000 
+M               1.000  1.000 
+G              -1.000 -1.000  1.000 
+
+
+*******************************************************************************
+Fri Jun  9 11:00:33 2023
+
+
+FIT:    data read from 'higgs.data' using 1:1:1
+        format = x:z:s
+        #datapoints = 30
+function used for fitting: f(x)
+	f(x)=k/((x**2-M**2)**2+M**2*G**2)
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   k             M             G            
+   0 2.9999999998e+01   0.00e+00  2.46e-11    1.000000e+00   1.000000e+00   1.000000e+00
+   1 2.9999986938e+01  -4.35e-02  2.46e-09    1.742867e+06   5.168536e+02   9.799158e-01
+
+After 1 iterations the fit converged.
+final sum of squares of residuals : 30
+rel. change during last iteration : -4.35332e-07
+
+degrees of freedom    (FIT_NDF)                        : 27
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 1.05409
+variance of residuals (reduced chisquare) = WSSR/ndf   : 1.11111
+p-value of the Chisq distribution (FIT_P)              : 0.314154
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+k               = 1.74287e+06      +/- 5.334e+15    (3.06e+11%)
+M               = 516.854          +/- 7.392e+11    (1.43e+11%)
+G               = 0.979916         +/- 3.622e+14    (3.696e+16%)
+
+correlation matrix of the fit parameters:
+                k      M      G      
+k               1.000 
+M               1.000  1.000 
+G              -1.000 -1.000  1.000 
+
+
+*******************************************************************************
+Fri Jun  9 11:04:16 2023
+
+
+FIT:    data read from 'higgs.data' using 1:1:1
+        format = x:z:s
+        #datapoints = 30
+function used for fitting: f(x)
+	f(x)=k/((x**2-M**2)**2+M**2*G**2)
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   k             M             G            
+   0 2.9999999998e+01   0.00e+00  2.46e-11    1.000000e+00   1.000000e+00   1.000000e+00
+   1 2.9999986938e+01  -4.35e-02  2.46e-09    1.742867e+06   5.168536e+02   9.799158e-01
+
+After 1 iterations the fit converged.
+final sum of squares of residuals : 30
+rel. change during last iteration : -4.35332e-07
+
+degrees of freedom    (FIT_NDF)                        : 27
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 1.05409
+variance of residuals (reduced chisquare) = WSSR/ndf   : 1.11111
+p-value of the Chisq distribution (FIT_P)              : 0.314154
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+k               = 1.74287e+06      +/- 5.334e+15    (3.06e+11%)
+M               = 516.854          +/- 7.392e+11    (1.43e+11%)
+G               = 0.979916         +/- 3.622e+14    (3.696e+16%)
+
+correlation matrix of the fit parameters:
+                k      M      G      
+k               1.000 
+M               1.000  1.000 
+G              -1.000 -1.000  1.000 
+
+
+*******************************************************************************
+Fri Jun  9 11:05:26 2023
+
+
+FIT:    data read from 'higgs.data' using 1:1:1
+        format = x:z:s
+        #datapoints = 30
+function used for fitting: f(x)
+	f(x)=k/((x**2-M**2)**2+M**2*G**2)
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   k             M             G            
+   0 2.9999999998e+01   0.00e+00  2.46e-11    1.000000e+00   1.000000e+00   1.000000e+00
+   1 2.9999986938e+01  -4.35e-02  2.46e-09    1.742867e+06   5.168536e+02   9.799158e-01
+
+After 1 iterations the fit converged.
+final sum of squares of residuals : 30
+rel. change during last iteration : -4.35332e-07
+
+degrees of freedom    (FIT_NDF)                        : 27
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 1.05409
+variance of residuals (reduced chisquare) = WSSR/ndf   : 1.11111
+p-value of the Chisq distribution (FIT_P)              : 0.314154
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+k               = 1.74287e+06      +/- 5.334e+15    (3.06e+11%)
+M               = 516.854          +/- 7.392e+11    (1.43e+11%)
+G               = 0.979916         +/- 3.622e+14    (3.696e+16%)
+
+correlation matrix of the fit parameters:
+                k      M      G      
+k               1.000 
+M               1.000  1.000 
+G              -1.000 -1.000  1.000 
+
+
+*******************************************************************************
+Fri Jun  9 11:06:07 2023
+
+
+FIT:    data read from 'higgs.data' using 1:1:1
+        format = x:z:s
+        #datapoints = 30
+function used for fitting: f(x)
+	f(x)=k/((x**2-M**2)**2+M**2*G**2)
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   k             M             G            
+   0 2.9999999998e+01   0.00e+00  2.46e-11    1.000000e+00   1.000000e+00   1.000000e+00
+   1 2.9999986938e+01  -4.35e-02  2.46e-09    1.742867e+06   5.168536e+02   9.799158e-01
+
+After 1 iterations the fit converged.
+final sum of squares of residuals : 30
+rel. change during last iteration : -4.35332e-07
+
+degrees of freedom    (FIT_NDF)                        : 27
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 1.05409
+variance of residuals (reduced chisquare) = WSSR/ndf   : 1.11111
+p-value of the Chisq distribution (FIT_P)              : 0.314154
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+k               = 1.74287e+06      +/- 5.334e+15    (3.06e+11%)
+M               = 516.854          +/- 7.392e+11    (1.43e+11%)
+G               = 0.979916         +/- 3.622e+14    (3.696e+16%)
+
+correlation matrix of the fit parameters:
+                k      M      G      
+k               1.000 
+M               1.000  1.000 
+G              -1.000 -1.000  1.000 

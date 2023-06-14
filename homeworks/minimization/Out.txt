@@ -1,3 +1,4 @@
+==============================[A]==============================
 minimum of the Rosenbrock's valley function, it took 0 steps, has one global minima at (1,1)
 awnser:      0.999      0.999 
 
@@ -15,3 +16,4 @@ should be approx (-3.8,3.1) it took 584 steps
 awnser:       3.58      -1.85 
 should be approx (3.6,-1.9) it took 309 steps
 
+==============================[B]==============================

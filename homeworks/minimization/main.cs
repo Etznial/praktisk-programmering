@@ -4,6 +4,7 @@ using static System.Math;
 using static matrix;
 using System.IO;
 using System.Diagnostics;
+using System.Collections.Generic;
 
 class main{
 	public static int it=0;
@@ -121,6 +122,8 @@ class main{
 
 
 	public static void Main(){
+		// A
+		WriteLine("==============================[A]==============================");
 		var start = new vector(2,2);
 		WriteLine($"minimum of the Rosenbrock's valley function, it took {step} steps, has one global minima at (1,1)");
 		qnewton(ros,start).print("awnser: "); step=0;
@@ -135,9 +138,13 @@ class main{
 		WriteLine($"should be approx (-3.8,3.1) it took {step} steps\n"); step=0;
 		qnewton(him,new vector( 3.5  , -1.3)).print("awnser: ");
 		WriteLine($"should be approx (3.6,-1.9) it took {step} steps\n"); step=0;
-
-
-
+		// B
+		WriteLine("==============================[B]==============================");
+		Func<vector, double> bw = (x) => x[1]/(Pow(x[0]-x[2], 2) + Pow(x[3],2)/4);
+		// initialise empty lists for energy, signal and error
+		List<double> energy = new List<double>();
+		List<double> signal = new List<double>();
+		List<double> error  = new List<double>();
 
 		/*
 		qnewton(him,new vector(-2.8, 3.1)).print($"should be approx (-2.8,3.1):"); 

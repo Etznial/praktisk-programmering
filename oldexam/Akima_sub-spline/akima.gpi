@@ -1,0 +1,13 @@
+set terminal svg
+set key top left
+set output "Akima.svg"
+set xlabel "x"
+set ylabel "y"
+set tics out
+#set xzeroaxis
+#set yzeroaxis
+set title "Test of akima sub-spline"
+plot [-3:3] [-1.55:1.55]\
+ "aspline.data" with lines linetype 2 lc "black" title "akima sub-spline"\
+,"qspline.data" using 1:2 with lines lc "black" dashtype 2 lw 1 title "quadratic spline"\
+,"akima.data" with points pt 7 ps 1 lc "black" title "data points"\

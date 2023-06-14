@@ -1,0 +1,4 @@
+size of p: 5, n=5
+sd size: 6
+p:          0          0          2          0          0 
+sd:          0          0          0          0          0          0 
