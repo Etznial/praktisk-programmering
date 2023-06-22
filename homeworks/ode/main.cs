@@ -63,6 +63,11 @@ class main{
 		return y_diff;
 	}
 
+	//exam
+	//Finite difference formula for Hessian matrix
+	public static matrix 
+	
+
 	public static void Main(){
 		// rk test
 		string toWriterk="";

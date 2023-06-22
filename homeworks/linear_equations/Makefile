@@ -9,7 +9,7 @@ main.exe : main.cs matrix.dll QRGS.dll
 
 DIR = ../../matlib/matrix
 matrix.dll : $(DIR)/vector.cs $(DIR)/matrix.cs
-	$(CSC) -target:library -out:$@ $^
+	mcs -target:library -out:$@ $^
 
 QRGS.dll : QRGS.cs matrix.dll
 	$(CSC) QRGS.cs -target:library -out:$@ -reference:matrix.dll

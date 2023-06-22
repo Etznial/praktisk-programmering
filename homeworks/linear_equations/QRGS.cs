@@ -54,6 +54,21 @@ public class QRGS{
 		}
 		return AI;
 	}
+	public static matrix inverseA(matrix A){
+		int n = A.size1;
+		matrix Q = A.copy();
+		matrix R = new matrix(n,n);
+		decomp(Q,R);
+		matrix AI = new matrix(n,n);
+		for(int i=0; i<n; i++){
+			vector e = new vector(n);
+			e[i]=1;
+			vector QTe = Q.transpose()*e;
+			AI[i] = solve(Q,R,QTe);		
+		}
+		return AI;
+		
+	}
 
 }
 
