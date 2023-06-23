@@ -1,16 +1,31 @@
-start guess:	         1          1 
-awnser:		       NaN        NaN 
-should be approx (3,2),     	the function was called 87 times
+==============================[A]==============================
+test of f(x, y) = x^4 - 16x^2 + y^4 - 16y^2, with four local minima at (2*Sqrt(2),2*Sqrt(2)), (-2*Sqrt(2),2*Sqrt(2)), (2*Sqrt(2),-2*Sqrt(2)) and (-2*Sqrt(2),-2*Sqrt(2)), for referance, 2*Sqrt(2) is approximatly 2.8
+start guess:	        10         10 
+awnser:		      2.83       2.83 
+should be approx (2*1.8,2*1.8),     	the function was called 172 times
+
+start guess:	       -10         10 
+awnser:		     -2.83       2.83 
+should be approx (-2*1.8,2*1.8),     	the function was called 172 times
+
+start guess:	        10        -10 
+awnser:		      2.83      -2.83 
+should be approx (2*1.8,-2*1.8),     	the function was called 172 times
+
+start guess:	       -10        -10 
+awnser:		     -2.83      -2.83 
+should be approx (-2*1.8,-2*1.8),     	the function was called 172 times
 
 f(x, y) = (x - 1)^4 + (x - 1)^2 + y^2, with two local minima at (1,0) and (-1,0)
-start guess:	        10          1 
-awnser:		       NaN        NaN 
-first local minima at (1, 0),    	the function was called 77 times
+start guess:	         1          1 
+awnser:		         1  -7.98e-09 
+first local minima at (1, 0),    	the function was called 46 times
 
-start guess:	       -10          1 
-awnser:		       NaN        NaN 
-second local minima at (-1, 0),     	the function was called 77 times
+start guess:	         1          1 
+awnser:		         1  -7.98e-09 
+second local minima at (-1, 0),     	the function was called 46 times
 
+==============================[B]==============================
 the Himmelblau's function's minima found with newtons method modified to utilize the finite difference hessian matrix
 minimum of the Himmelblau's function, has four local minima at (3,2), (-2.8,3.1) (-3.8,-3.3) and (3.6,-1.8):
 
@@ -32,7 +47,7 @@ should be approx (3.6,-1.9)	the Himmelblau function was called 130 times
 
 sum of Himmelblau function calles for newton = 478
 
-the Himmelblau's function's minima found with qusinewtons method, to compare the quasinewton and newton methods
+the Himmelblau's function's minima found with qusinewtons method, to compare with the newtons methods
 start guess:	         3          3 
 awnser:		         3          2 
 should be approx (3,2),     	the Himmelblau function was called 62 times
@@ -56,3 +71,16 @@ while the quasinewton metod have to construct the hessian while running the mini
 Disclaimer: the quasinewton methos is capable of finding all the minima of the Himmelblau function, however, closer starting parameters are needed, while the newtons method seems to be able to always find the local minima closest to the starting parameters
 
 ps. I have implemeted the starting parameters such, that they are controlled by the variable a, so if you wish you can increase the value of a to see how the quasinewton method starts finding random minia instead of the closest
+
+Comparing with the Rosenbrock's valley function
+newtons method
+start guess:	         3          3 
+awnser:		         1          1 
+should be approx (1,1)	the Rosenbrock's valley function was called 430 times
+
+quasi-newtons method
+start guess:	         3          3 
+awnser:		         1          1 
+should be approx (1,1)	the Rosenbrock's valley function was called 448 times
+
+Quasi-newtons method seems to get the wrong awnser if the starting parameters are too far from the minima, where as the newtons method using the hessian matrix can take any starting parameters and til get the right awnser

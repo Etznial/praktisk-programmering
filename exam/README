@@ -1,0 +1,18 @@
+
+
+In part A I have implimented the (modified) Newton's minimization method where the Hessian matrix is computed numerically using a finite-difference approximation (I have used the example, equation (48) in the Minimization Chapter)
+
+In part B I have compared my implimentation with my quasi-Newton minimizer, from the homework minimization, by useing both minimizers with the same starting parameters on the Himmelblau function to find all the local minima. I have traked the amount of times the function is called in each run of the minimizers, to get a better overview of how effective the rutine is.
+
+In part C I have done nothing, scince I didn't find anything I wanted to do. Besides, it fitts very well, since I havn't made a lot, if any, of the C's in the homeworks.
+
+Selfevaluation:
+  
+ ======================================
+| #  | exam	      | A | B | C | Σ   |
+ ======================================
+| 9  | Newtons method | 6 | 3 | - |  9  |
+ ======================================
+|                     total points:  9  |
+ ======================================
+

@@ -76,11 +76,7 @@ class main{
 		vector xnew=x.copy();
 		vector grad = new vector(n);
 		for(int i=0;i<n;i++){
-			if(x[i]<Pow(2,-26)){
-				dx=Pow(2,-26);
-			}else{
-				dx=Abs(x[i])*Pow(2,-26);
-			}
+			dx=Abs(x[i])*Pow(2,-26);
 			xnew[i]+=dx;
 			grad[i]=(f(xnew)-f(x))/dx;
 			xnew[i]-=dx;
@@ -179,13 +175,15 @@ class main{
 		return res;
 	}
 		
-	static public double test3(vector v){
+	static public double test3(vector v){ // f(x, y) = x^4 - 16x^2 + y^4 - 16y^2
 		it++;
-		double res=v[0]+Pow(v[1],2);
+		double x = v[0];
+		double y = v[1];
+		double res = Pow(x,4)-16*Pow(x,2)+Pow(y,4)-16*Pow(y,2);
 		return res;
 	}
 
-	static public double test4(vector v){
+	static public double test4(vector v){// f(x, y) = (x - 1)^4 + (x - 1)^2 + y^2
 		it++;
 		double x = v[0];
 		double y = v[1];
@@ -195,38 +193,46 @@ class main{
 
 
 	public static void Main(){
-		
 		vector start;
-		
-		//Func<vector, double> test1 = (x) => x[0]*x[0]+x[1]*x[1];
-		//Func<vector, double> test2 = (x) => Pow(x[0]+4,2)+Pow(x[1]+4,2);
-		//fhess(test1,new vector(1,2)).print("finite difference Hessian matrix: ");
-		//newton(test1,new vector (-4,-4), 1e-11).print("newton test1: ");
-		//WriteLine($"it = {it}"); it=0;
-		
-		//newton(test2,new vector (-5,5)).print("newton test2: ");
-		//newton(ros,new vector (-2,2)).print("newton ros: ");
-			
-		start = new vector(1,1);
+		int a;
+		int b;
+
+		WriteLine("==============================[A]==============================");
+		WriteLine("test of f(x, y) = x^4 - 16x^2 + y^4 - 16y^2, with four local minima at (2*Sqrt(2),2*Sqrt(2)), (-2*Sqrt(2),2*Sqrt(2)), (2*Sqrt(2),-2*Sqrt(2)) and (-2*Sqrt(2),-2*Sqrt(2)), for referance, 2*Sqrt(2) is approximatly 2.8");
+		a=10;
+		start = new vector(a,a);
 		start.print("start guess:\t");
 		newton(test3,start).print("awnser:\t\t");
-		WriteLine($"should be approx (3,2),     \tthe function was called {it} times\n"); it=0;
+		WriteLine($"should be approx (2*1.8,2*1.8),     \tthe function was called {it} times\n"); it=0;
+		start = new vector(-a,a);
+		start.print("start guess:\t");
+		newton(test3,start).print("awnser:\t\t");
+		WriteLine($"should be approx (-2*1.8,2*1.8),     \tthe function was called {it} times\n"); it=0;
+		start = new vector(a,-a);
+		start.print("start guess:\t");
+		newton(test3,start).print("awnser:\t\t");
+		WriteLine($"should be approx (2*1.8,-2*1.8),     \tthe function was called {it} times\n"); it=0;
+		start = new vector(-a,-a);
+		start.print("start guess:\t");
+		newton(test3,start).print("awnser:\t\t");
+		WriteLine($"should be approx (-2*1.8,-2*1.8),     \tthe function was called {it} times\n"); it=0;
 	
 		WriteLine("f(x, y) = (x - 1)^4 + (x - 1)^2 + y^2, with two local minima at (1,0) and (-1,0)");
-		start = new vector(10,1);
+		start = new vector(1,1);
 		start.print("start guess:\t");
 		newton(test4,start).print("awnser:\t\t");
 		WriteLine($"first local minima at (1, 0),    \tthe function was called {it} times\n"); it=0;
-		start = new vector(-10,1);
+		start = new vector(1,1);
 		start.print("start guess:\t");
 		newton(test4,start).print("awnser:\t\t");
 		WriteLine($"second local minima at (-1, 0),     \tthe function was called {it} times\n"); it=0;
 		
 		// B
+		WriteLine("==============================[B]==============================");
 		WriteLine("the Himmelblau's function's minima found with newtons method modified to utilize the finite difference hessian matrix");
 		WriteLine("minimum of the Himmelblau's function, has four local minima at (3,2), (-2.8,3.1) (-3.8,-3.3) and (3.6,-1.8):\n");it=0;
 		int hsum=0;
-		int a = 3;
+		a = 3;
 
 		start = new vector(a,a);
 		start.print("start guess:\t");
@@ -250,7 +256,7 @@ class main{
 		WriteLine($"sum of Himmelblau function calles for newton = {hsum}\n");
 		
 		
-		WriteLine("the Himmelblau's function's minima found with qusinewtons method, to compare the quasinewton and newton methods");
+		WriteLine("the Himmelblau's function's minima found with qusinewtons method, to compare with the newtons methods");
 		int qhsum=0;
 		
 		start = new vector(a,a);
@@ -276,7 +282,23 @@ class main{
 		WriteLine("With the same starting parameters the newtions method could find the local minimum which was downhill from the starting parameters,\nwhile the quasinewton metod have to construct the hessian while running the minimization, this leads to a few confused first steps for the quasinewton method.");
 		WriteLine("Disclaimer: the quasinewton methos is capable of finding all the minima of the Himmelblau function, however, closer starting parameters are needed, while the newtons method seems to be able to always find the local minima closest to the starting parameters\n");
 		WriteLine("ps. I have implemeted the starting parameters such, that they are controlled by the variable a, so if you wish you can increase the value of a to see how the quasinewton method starts finding random minia instead of the closest");
+		
+		WriteLine("\nComparing with the Rosenbrock's valley function");
+		a=3;
+		b=3;
+		double acc=1e-4;
+		WriteLine("newtons method");
+		start = new vector(a,b);
+		start.print("start guess:\t");
+		newton(ros,start,acc).print("awnser:\t\t");
+		WriteLine($"should be approx (1,1)\tthe Rosenbrock's valley function was called {it} times\n"); it=0;
 
+		WriteLine("quasi-newtons method");
+		start = new vector(a,b);
+		start.print("start guess:\t");
+		qnewton(ros,start,acc).print("awnser:\t\t");
+		WriteLine($"should be approx (1,1)\tthe Rosenbrock's valley function was called {it} times\n"); it=0;
+		WriteLine("Quasi-newtons method seems to get the wrong awnser if the starting parameters are too far from the minima, where as the newtons method using the hessian matrix can take any starting parameters and til get the right awnser");
 		//newton(test2,new vector(1,1), 1e-6).print("newton test2: ");
 		
 		
