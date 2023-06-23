@@ -32,7 +32,7 @@ class main{
 			if(Abs(start[i])<Pow(2,-26)) start[i]=Pow(2,-26);
 		}
 		while(grad.norm()>acc){
-			step++;
+			//step++;
 			dx=-B*grad;
 			lambda=1.0;
 			while(true){
@@ -52,6 +52,7 @@ class main{
 				}
 				lambda/=2;
 				if(lambda < 1.0/1024){
+					//WriteLine("backtracking...");
 					start+=lambda*dx;
 					grad=gradient(f,start);
 					B.set_identity();
@@ -97,27 +98,75 @@ class main{
 		return res;
 	}
 
+	static public double test1(vector v){
+		it++;
+		double res=Pow(v[0],2)+Pow(v[1],2);
+		return res;
+	}
+
+	static public double test2(vector v){
+		it++;
+		double res=Pow(v[0]+4,2)+Pow(v[1]+4,2);
+		return res;
+	}
+		
+	static public double test3(vector v){
+		it++;
+		double res=v[0]+Pow(v[1],2);
+		return res;
+	}
+
+	static public double test4(vector v){ // f(x, y) = (x - 1)^4 + (x - 1)^2 + y^2
+		it++;
+		double x = v[0];
+		double y = v[1];
+		double res = Pow(x-1,4)+Pow(x-1,2)+Pow(y,2); // local minima at (1, 0) and (-1, 0)
+		return res;
+	}
+
+
+	static public double test5(vector x){ // f(x, y) = x^4-7*x^3-32*x^2+y^2
+		it++;
+		return Pow(x[0],4)-7*Pow(x[0],3)-32*Pow(x[0],2)+Pow(x[1],2);
+	}
+
 
 
 
 	public static void Main(){
 		// A
 		WriteLine("==============================[A]==============================");
-		var start = new vector(2,2);
+		vector start;
+		WriteLine("test of x^2+y^2");
+		start=new vector(5,-7);
+		qnewton(test1,start).print("awnser: ");
+		WriteLine($"should be approx (0,0) the function was called {it} times\n"); it=0;
+		
+		WriteLine("test of (x+4)^2+(y+4)^2");
+		start=new vector(5,-7);
+		qnewton(test2,start).print("awnser: ");
+		WriteLine($"should be approx (-4,-4) the function was called {it} times\n"); it=0;
+
+		WriteLine("test of f(x, y) = x^4-7*x^3-32*x^2+y^2");
+		start=new vector(10,-2);
+		qnewton(test5,start).print("awnser: ");
+		WriteLine($"should be approx (7.41,0) the function was called {it} times\n"); it=0;
+
+		start = new vector(2,2);
 		WriteLine($"minimum of the Rosenbrock's valley function");
 		qnewton(ros,start).print("awnser: ");
-		WriteLine($"should be approx (1,1) it took {step} steps\n"); step=0;
+		WriteLine($"should be approx (1,1) the function was called {it} times\n"); it=0;
 		WriteLine();
 				
 		WriteLine("minimum of the Himmelblau's function, has four local minima at (3,2), (-2.8,3.1) (-3.8,-3.3) and (3.6,-1.8):\n");
 		qnewton(him,new vector( 2.5  ,  2.5)).print("awnser: ");
-		WriteLine($"should be approx (3,2) it took {step} steps\n"); step=0;
+		WriteLine($"should be approx (3,2) the function was called {it} times\n"); it=0;
 		qnewton(him,new vector(-2.5  ,  2.8)).print("awnser");
-		WriteLine($"should be approx (-2.8,3.1) it took {step} steps\n"); step=0;
+		WriteLine($"should be approx (-2.8,3.1) the function was called {it} times\n"); it=0;
 		qnewton(him,new vector(-3.5  , -3.0)).print("awnser: ");
-		WriteLine($"should be approx (-3.8,3.1) it took {step} steps\n"); step=0;
+		WriteLine($"should be approx (-3.8,3.1) the function was called {it} times\n"); it=0;
 		qnewton(him,new vector( 3.5  , -1.3)).print("awnser: ");
-		WriteLine($"should be approx (3.6,-1.9) it took {step} steps\n"); step=0;
+		WriteLine($"should be approx (3.6,-1.9) the function was called {it} times\n"); it=0;
 		
 		// B
 		WriteLine("==============================[B]==============================");

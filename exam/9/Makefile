@@ -1,6 +1,6 @@
 default : Out.txt Higgs.svg
 
-Out.txt : main.exe
+Out.txt bwfit.data : main.exe
 	mono main.exe > Out.txt -target:$@
 
 main.exe : main.cs matrix.dll genlist.dll sfuns.dll #QRGS.dll
@@ -22,7 +22,7 @@ sfuns.dll : $(DIR3)error.cs $(DIR3)gamma.cs
 #QRGS.dll : $(DIR4)QRGS.cs
 #	mcs -target:library -out:$@ $^
 
-Higgs.svg : higgs.gpi higgs.data 
+Higgs.svg : higgs.gpi higgs.data bwfit.data
 	gnuplot $<
 
 #QRGS.dll : QRGS.cs matrix.dll

@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Collections.Generic;
 
 class main{
+	// minimization homework from here
 	public static int it=0;
 	public const double MEPS=2e-10;
 	public static int step=0;
@@ -51,7 +52,7 @@ class main{
 					break;
 				}
 				lambda/=2;
-				if(lambda < MEPS){
+				if(lambda < 1.0/1024){
 					start+=lambda*dx;
 					grad=gradient(f,start);
 					B.set_identity();
@@ -75,7 +76,11 @@ class main{
 		vector xnew=x.copy();
 		vector grad = new vector(n);
 		for(int i=0;i<n;i++){
-			dx=Abs(x[i])*Pow(2,-26);
+			if(x[i]<Pow(2,-26)){
+				dx=Pow(2,-26);
+			}else{
+				dx=Abs(x[i])*Pow(2,-26);
+			}
 			xnew[i]+=dx;
 			grad[i]=(f(xnew)-f(x))/dx;
 			xnew[i]-=dx;
@@ -96,7 +101,7 @@ class main{
 		double res=Pow(Pow(x,2)+y-11,2)+Pow(x+Pow(y,2)-7,2);
 		return res;
 	}
-	
+	// here
 	static public matrix fhess(Func<vector, double> f, vector c, double eps = 1e-8){
 		int n=c.size;
 		matrix H = new matrix(n,n);
@@ -161,17 +166,40 @@ class main{
 		}
 		return result;
 	}
+	
+	static public double test1(vector v){
+		it++;
+		double res=Pow(v[0],2)+Pow(v[1],2);
+		return res;
+	}
 
+	static public double test2(vector v){
+		it++;
+		double res=Pow(v[0]+4,2)+Pow(v[1]+4,2);
+		return res;
+	}
 		
+	static public double test3(vector v){
+		it++;
+		double res=v[0]+Pow(v[1],2);
+		return res;
+	}
+
+	static public double test4(vector v){
+		it++;
+		double x = v[0];
+		double y = v[1];
+		double res = Pow(x-1,4)+Pow(x-1,2)+Pow(y,2); // local minima at (1, 0) and (-1, 0)
+		return res;
+	}
 
 
 	public static void Main(){
 		
 		vector start;
 		
-		Func<vector, double> test1 = (x) => x[0]*x[0]+x[1]*x[1];
-		Func<vector, double> test2 = (x) => Pow(x[0]+4,2)+Pow(x[1]+4,2);
-		Func<vector, double> test3 = (x) => x[0]+Pow(x[1],2);
+		//Func<vector, double> test1 = (x) => x[0]*x[0]+x[1]*x[1];
+		//Func<vector, double> test2 = (x) => Pow(x[0]+4,2)+Pow(x[1]+4,2);
 		//fhess(test1,new vector(1,2)).print("finite difference Hessian matrix: ");
 		//newton(test1,new vector (-4,-4), 1e-11).print("newton test1: ");
 		//WriteLine($"it = {it}"); it=0;
@@ -183,9 +211,18 @@ class main{
 		start.print("start guess:\t");
 		newton(test3,start).print("awnser:\t\t");
 		WriteLine($"should be approx (3,2),     \tthe function was called {it} times\n"); it=0;
-
-
-
+	
+		WriteLine("f(x, y) = (x - 1)^4 + (x - 1)^2 + y^2, with two local minima at (1,0) and (-1,0)");
+		start = new vector(10,1);
+		start.print("start guess:\t");
+		newton(test4,start).print("awnser:\t\t");
+		WriteLine($"first local minima at (1, 0),    \tthe function was called {it} times\n"); it=0;
+		start = new vector(-10,1);
+		start.print("start guess:\t");
+		newton(test4,start).print("awnser:\t\t");
+		WriteLine($"second local minima at (-1, 0),     \tthe function was called {it} times\n"); it=0;
+		
+		// B
 		WriteLine("the Himmelblau's function's minima found with newtons method modified to utilize the finite difference hessian matrix");
 		WriteLine("minimum of the Himmelblau's function, has four local minima at (3,2), (-2.8,3.1) (-3.8,-3.3) and (3.6,-1.8):\n");it=0;
 		int hsum=0;

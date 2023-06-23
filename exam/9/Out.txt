@@ -1,0 +1,58 @@
+start guess:	         1          1 
+awnser:		       NaN        NaN 
+should be approx (3,2),     	the function was called 87 times
+
+f(x, y) = (x - 1)^4 + (x - 1)^2 + y^2, with two local minima at (1,0) and (-1,0)
+start guess:	        10          1 
+awnser:		       NaN        NaN 
+first local minima at (1, 0),    	the function was called 77 times
+
+start guess:	       -10          1 
+awnser:		       NaN        NaN 
+second local minima at (-1, 0),     	the function was called 77 times
+
+the Himmelblau's function's minima found with newtons method modified to utilize the finite difference hessian matrix
+minimum of the Himmelblau's function, has four local minima at (3,2), (-2.8,3.1) (-3.8,-3.3) and (3.6,-1.8):
+
+start guess:	         3          3 
+awnser:		         3          2 
+should be approx (3,2),     	the Himmelblau function was called 130 times
+
+start guess:	        -3          3 
+awnser		     -2.81       3.13 
+should be approx (-2.8,3.1),	the Himmelblau function was called 88 times
+
+start guess:	        -3         -3 
+awnser:		     -3.78      -3.28 
+should be approx (-3.8,-3.1)	the Himmelblau function was called 130 times
+
+start guess:	         3         -3 
+awnser:		      3.58      -1.85 
+should be approx (3.6,-1.9)	the Himmelblau function was called 130 times
+
+sum of Himmelblau function calles for newton = 478
+
+the Himmelblau's function's minima found with qusinewtons method, to compare the quasinewton and newton methods
+start guess:	         3          3 
+awnser:		         3          2 
+should be approx (3,2),     	the Himmelblau function was called 62 times
+
+start guess:	        -3          3 
+awnser		     -2.81       3.13 
+should be approx (-2.8,3.1),	the Himmelblau function was called 56 times
+
+start guess:	        -3         -3 
+awnser:		     -3.78      -3.28 
+should be approx (-3.8,-3.1)	the Himmelblau function was called 70 times
+
+start guess:	         3         -3 
+awnser:		      3.58      -1.85 
+should be approx (3.6,-1.9)	the Himmelblau function was called 68 times
+
+sum of Himmelblau function calles for quasinewton = 256
+
+With the same starting parameters the newtions method could find the local minimum which was downhill from the starting parameters,
+while the quasinewton metod have to construct the hessian while running the minimization, this leads to a few confused first steps for the quasinewton method.
+Disclaimer: the quasinewton methos is capable of finding all the minima of the Himmelblau function, however, closer starting parameters are needed, while the newtons method seems to be able to always find the local minima closest to the starting parameters
+
+ps. I have implemeted the starting parameters such, that they are controlled by the variable a, so if you wish you can increase the value of a to see how the quasinewton method starts finding random minia instead of the closest
