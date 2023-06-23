@@ -162,24 +162,36 @@ class main{
 		return result;
 	}
 
+		
+
 
 	public static void Main(){
 		
+		vector start;
+		
 		Func<vector, double> test1 = (x) => x[0]*x[0]+x[1]*x[1];
 		Func<vector, double> test2 = (x) => Pow(x[0]+4,2)+Pow(x[1]+4,2);
+		Func<vector, double> test3 = (x) => x[0]+Pow(x[1],2);
 		//fhess(test1,new vector(1,2)).print("finite difference Hessian matrix: ");
 		//newton(test1,new vector (-4,-4), 1e-11).print("newton test1: ");
 		//WriteLine($"it = {it}"); it=0;
 		
 		//newton(test2,new vector (-5,5)).print("newton test2: ");
 		//newton(ros,new vector (-2,2)).print("newton ros: ");
-		
+			
+		start = new vector(1,1);
+		start.print("start guess:\t");
+		newton(test3,start).print("awnser:\t\t");
+		WriteLine($"should be approx (3,2),     \tthe function was called {it} times\n"); it=0;
+
+
+
 		WriteLine("the Himmelblau's function's minima found with newtons method modified to utilize the finite difference hessian matrix");
 		WriteLine("minimum of the Himmelblau's function, has four local minima at (3,2), (-2.8,3.1) (-3.8,-3.3) and (3.6,-1.8):\n");it=0;
 		int hsum=0;
 		int a = 3;
 
-		vector start = new vector(a,a);
+		start = new vector(a,a);
 		start.print("start guess:\t");
 		newton(him,start).print("awnser:\t\t");
 		WriteLine($"should be approx (3,2),     \tthe Himmelblau function was called {it} times\n"); hsum+=it; it=0;

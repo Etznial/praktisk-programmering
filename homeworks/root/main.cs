@@ -10,8 +10,8 @@ class main{
 	static vector newton(Func<vector,vector> f, vector x, double eps=1e-2){
 		vector cx=x.copy();
 		vector fcx = f(cx);
-		cx.print("cx=");
-		fcx.print("fcx=");
+		//cx.print("cx=");
+		//fcx.print("fcx=");
 		int m = fcx.size; // rows
 		int n = cx.size; // columbs
 		double lambda;
@@ -33,10 +33,10 @@ class main{
 			}
 			
 			step = QRGS.solveG(J,-fcx);
-			step.print("step=");
-			var mismatch=J*step+fcx;
-			mismatch.print("skal være nul");
-			J.print("Jacobian matrix: ");
+			//step.print("step=");
+			//var mismatch=J*step+fcx;
+			//mismatch.print("skal være nul");
+			//J.print("Jacobian matrix: ");
 			lambda = 1;
 			vector z=cx+step*lambda;	
 			vector fz=f(z);
@@ -44,20 +44,16 @@ class main{
 			do{
 				if(fz.norm()<(1-lambda/2)*fcx.norm())break;
 				else{
-					WriteLine("backtracking...");
+					//WriteLine("backtracking...");
 					lambda/=2;
 					z=cx+step*lambda;	
 					fz=f(z);
-					//WriteLine($"fz.norm(): {fz.norm()}");
-					//WriteLine($"lambda: {lambda}");
-					//WriteLine($"(1-lambda/2)*fcx.norm(): {(1-lambda/2)*fcx.norm()}");
 				}
 			}while( lambda>Pow(2,-23) );
-			
 			fcx=fz;
 			cx=z;
-			z.print("z=");
-			fz.print($"|fz|={fz.norm()} fz=");
+			//z.print("z=");
+			//fz.print($"|fz|={fz.norm()} fz=");
 		}
 		return cx;
 	}
@@ -152,47 +148,83 @@ class main{
 		
 	static public vector test2(vector v){
 		it++;
-		var res = new vector(v.size);
-		for(int i=0;i<v.size;i++)res[i]=Sqrt(Abs(v[i]));
+		var res = new vector(2);
+		res[0]=2*(v[0]+1);
+		res[1]=2*v[1];
 		return res;
 	}
 
+	static public vector test3(vector v){
+		it++;
+		var res = new vector(2);
+		res[0]=2*v[0];
+		res[1]=2*v[1];
+		return res;
+	}
+
+	static public vector test4(vector v){
+		it++;
+		var res = new vector(2);
+		res[0]=v[1];
+		res[1]=v[0];
+		return res;
+	}
+
+	static public vector test5(vector v){
+		it++;
+		var res = new vector(2);
+		res[0]=2*(v[0]-1);
+		res[1]=2*(v[1]+1);
+		return res;
+	}
+	
+
 	public static void Main(){
-		/*
-		WriteLine("newton test");
-		vector start;
-		start = new vector(-10,10);
-		it=0;
-		newton(f,start).print();
-		WriteLine($"number of times func has been called: {it}");
-		start = new vector(1,1,1);
-		it=0;
-		newton(test1,start,eps:1e-5).print();
-		WriteLine($"number of times func has been called: {it}");
+		// A
+		// testing with tests 1 through 4
+		WriteLine("=====[A]=====");
+		int a = 5;
+		double acc=1e-10;
+		vector start = new vector(a,a);
+		start.print($"starting parameters for all tests:");
+		WriteLine($"acc={acc}\n");
 		
-		/*
-		string toWrite1="";
-		toWrite1+=$"{xlist2[i]}\t{ylist2[i][1]}\n";
-		File.WriteAllText("pen1.data",toWrite1);
-		*/
-		/*
-		WriteLine("newton test");
-		vector start;
-		start = new vector(-7,5);
-		it=0;
-		newton(f,start).print();
-		WriteLine($"number of times func has been called: {it}");
-		start = new vector(1,1,1);
-		it=0;
-		*/
-		it=0;
-		newton(f,new vector(10,-10)).print("f2: ");
-		WriteLine($"number of times func has been called: {it}"); it=0;
+		WriteLine("x**2+y**2");
+		newton(test1, start,acc).print("test1 awnser:");
+		WriteLine($"should have extremum at (0,0). The test function was called {it} times\n"); it=0;
+
+		start = new vector(a,a);
+		WriteLine("(x+1)**2+y**2");
+		newton(test2, start,acc).print("test2 awnser:");
+		WriteLine($"should have extremum at (-1,0). The test function was called {it} times\n"); it=0;
+
+		start = new vector(a,a);
+		WriteLine("test of x**2+y**2");
+		newton(test3, start,acc).print("test3 awnser:");
+		WriteLine($"should have extremum at (0,0). The test function was called {it} times\n"); it=0;
 		
-		/*
-		newtonTest(test1,start,eps:1e-5).print();
-		WriteLine($"number of times func has been called: {it}");
-		*/
+		start = new vector(a,a);
+		WriteLine("test of x+y");
+		newton(test4, start,acc).print("awnser:");
+		WriteLine($"should have extremum at (0,0). The test function was called {it} times\n"); it=0;
+
+		start = new vector(a,a);
+		WriteLine("test of (x-1)**2+(y+1)**2");
+		newton(test5, start,acc).print("awnser:");
+		WriteLine($"should have extremum at (1,-1). The test function was called {it} times\n"); it=0;
+
+		it=0;
+		WriteLine("The Rosenbrock's valley function");
+		start = new vector(10,-10);
+		start.print("startinf parameters for the Rosenbrock's valley function");
+		newton(f,start).print("awnser: ");
+		WriteLine($"should have extremum at (1,1). The Rosenbrock's valley function was called {it} times\n"); it=0;
+		WriteLine("The Rosenbrock's valley function is made to be hard for minimizers, because of it's sharp vally, which explains the absurd amount of calls to the function\n");
+		//B	
+		WriteLine("=====[B]=====");
+
+	
+	
 	}	
 }// class
 

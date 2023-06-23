@@ -51,7 +51,7 @@ class main{
 					break;
 				}
 				lambda/=2;
-				if(lambda < MEPS){
+				if(lambda < 1.0/1024){
 					start+=lambda*dx;
 					grad=gradient(f,start);
 					B.set_identity();
@@ -118,6 +118,7 @@ class main{
 		WriteLine($"should be approx (-3.8,3.1) it took {step} steps\n"); step=0;
 		qnewton(him,new vector( 3.5  , -1.3)).print("awnser: ");
 		WriteLine($"should be approx (3.6,-1.9) it took {step} steps\n"); step=0;
+		
 		// B
 		WriteLine("==============================[B]==============================");
 		Func<vector, double> bw = (x) => x[1]/(Pow(x[0]-x[2], 2) + Pow(x[3],2)/4); // E = 1, m = 2, gamma = 3, A = 4
@@ -135,16 +136,19 @@ class main{
 			signal.add(double.Parse(words[1]));
 			error .add(double.Parse(words[2]));
 		}
+		
 		WriteLine("energy\tsignal\terror");
 		for(int i=0;i<energy.size;i++){
 			WriteLine($"{energy[i]}\t{signal[i]}\t{error[i]}");
 		}
-
-		vector guess = new vector(1,1,1);
+	
+		vector guess = new vector(2,120,2);
 		vector bw_params = fit(bw, guess, energy, signal, error,1e-4);
+		
+
 		double A,m,gamma;A=bw_params[0];m=bw_params[1];gamma=bw_params[2];
 		WriteLine($"parameters for the Breit-Wigner function: A={A}\tm={m}\tgamma={gamma}");
-		
+				
 		double bwData;
 		string toWrite="";
 		for(double E=100;E<160;E+=0.1){
@@ -153,7 +157,7 @@ class main{
 			
 		}
 		File.WriteAllText("bwfit.data",toWrite);
-
+		
 		/*
 		qnewton(him,new vector(-2.8, 3.1)).print($"should be approx (-2.8,3.1):"); 
 		WriteLine($"it took {step} steps"); step=0;
