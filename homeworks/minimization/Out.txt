@@ -1,7 +1,7 @@
 ==============================[A]==============================
 test of x^2+y^2
-awnser:  -9.54e-08  -1.36e-07 
-should be approx (0,0) the function was called 16 times
+awnser:  -9.54e-08  -9.54e-08 
+should be approx (0,0) the function was called 12 times
 
 test of (x+4)^2+(y+4)^2
 awnser:         -4         -4 
@@ -13,7 +13,7 @@ should be approx (7.41,0) the function was called 140 times
 
 minimum of the Rosenbrock's valley function
 awnser:          1          1 
-should be approx (1,1) the function was called 706 times
+should be approx (1,1) the function was called 448 times
 
 
 minimum of the Himmelblau's function, has four local minima at (3,2), (-2.8,3.1) (-3.8,-3.3) and (3.6,-1.8):

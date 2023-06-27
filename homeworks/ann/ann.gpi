@@ -1,0 +1,13 @@
+set terminal svg
+set key top right
+set output "Ann.svg"
+set xlabel "x"
+set ylabel "y"
+set tics out
+set xzeroaxis
+set yzeroaxis
+#set logscale xy
+set title "Testing ann"
+plot [-1.5:1.5] [-2:2] \
+ "g.data" with points pt 7 ps 0.5 title "g data"\
+,"gfit.data" with line linetype 7 linewidth 1 title "gfit data"\

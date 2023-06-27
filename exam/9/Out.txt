@@ -1,20 +1,20 @@
 ==============================[A]==============================
-test of f(x, y) = x^4 - 16x^2 + y^4 - 16y^2, with four local minima at (2*Sqrt(2),2*Sqrt(2)), (-2*Sqrt(2),2*Sqrt(2)), (2*Sqrt(2),-2*Sqrt(2)) and (-2*Sqrt(2),-2*Sqrt(2)), for referance, 2*Sqrt(2) is approximatly 2.8
+test of f(x, y) = x^4 - 16x^2 + y^4 - 16y^2, with four local minima at (2*Sqrt(2),2*Sqrt(2)), (-2*Sqrt(2),2*Sqrt(2)), (2*Sqrt(2),-2*Sqrt(2)) and (-2*Sqrt(2),-2*Sqrt(2)), for referance, 2*Sqrt(2) is approximatly 2.83
 start guess:	        10         10 
 awnser:		      2.83       2.83 
-should be approx (2*1.8,2*1.8),     	the function was called 172 times
+should be approx (2.83,2.83),     	the function was called 172 times
 
 start guess:	       -10         10 
 awnser:		     -2.83       2.83 
-should be approx (-2*1.8,2*1.8),     	the function was called 172 times
+should be approx (-2.83,2.83),     	the function was called 172 times
 
 start guess:	        10        -10 
 awnser:		      2.83      -2.83 
-should be approx (2*1.8,-2*1.8),     	the function was called 172 times
+should be approx (2.83,-2.83),     	the function was called 172 times
 
 start guess:	       -10        -10 
 awnser:		     -2.83      -2.83 
-should be approx (-2*1.8,-2*1.8),     	the function was called 172 times
+should be approx (-2.83,-2.83),     	the function was called 172 times
 
 f(x, y) = (x - 1)^4 + (x - 1)^2 + y^2, with two local minima at (1,0) and (-1,0)
 start guess:	         1          1 

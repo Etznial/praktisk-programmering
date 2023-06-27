@@ -1,0 +1,13 @@
+set terminal svg
+set key top right
+set output "Higgs.svg"
+set xlabel "Energy E[GeV]"
+set ylabel "Signal sigma(E) [certain units]"
+set tics out
+set xzeroaxis
+set yzeroaxis
+#set logscale xy
+set title "Relativistic Breit–Wigner distribution"
+plot [100:160] [-10:10] \
+ "higgs.data" with points pt 7 ps 0.5 title "Higgs data"\
+,"bwfit.data" with line linetype 7 linewidth 0.5 title "Breit–Wigner distribution fit"\

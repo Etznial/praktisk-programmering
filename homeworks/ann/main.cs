@@ -7,8 +7,64 @@ using System.Diagnostics;
 using System.Collections.Generic;
 
 class main{
+	public class ann{
+		int n; /* number of hidden neurons */
+		Func<double,double> f = x => x*Exp(-x*x); /* activation function */
+		public vector p; /* network parameters */
+		public ann(int ni){/* constructor */
+			n=ni;
+			p = new vector(3*n);
+			for(int i=0;i<3*n;i++){
+				p[i]=1.0;
+			}
+		}
+		public double response(double x){
+			double Fp=0;
+			double ai;
+			double bi;
+			double wi;
+			for(int i=0;i<n;i++){
+				ai=p[i*3+0];
+				bi=p[i*3+1];
+				wi=p[i*3+2];
+				Fp+=f((x-ai)/bi)*wi;
+			}
+			return Fp;
+			/* return the response of the network to the input signal x */
+		}
+		public void train(vector x,vector y){
+		/* train the network to interpolate the given table {x,y} */
+			Func<vector,double> cost = (pg) => {
+				double sum=0;
+				p=pg;
+				for(int i=0;i<n;i++){
+					sum+=Pow(response(x[i])-y[i],2);
+				}
+				return sum;
+			};
+			double xmin = x[0];
+			double xmax = x[x.size-1];
+			vector guess = new vector(3*n);
+			for(int i=0;i<n*3;i++){
+				if(i%3==0){ // making ai
+					guess[i]=(xmax-xmin)*((double)i/(3*(double)n)+1.0/(2*n))+xmin;
+				}
+				if(i%3==1){ // bi
+					guess[i]=(xmax-xmin)/(2*(double)n);
+					//guess[i]=1.0;
+				}
+				if(i%3==2){ // wi
+					guess[i]=0.2*Pow(-1,i);
+					//guess[i]=1.0;
+				}
+			}
+			p=qnewton(cost,guess);
+		}
+	}
+
+
+
 	// minimization homework from here
-	// public static double scale=1; // used for testus maximus
 	public static int it=0;
 	public const double MEPS=2e-10;
 	public static int step=0;
@@ -151,7 +207,7 @@ class main{
 					break;
 				}
 				lambda/=2;
-				if(lambda<1.0/1024){ 
+				if(lambda<1.0/1024){ //go in reverse
 					fvalue = fs;
 					x+=s; // step is accepted, updates x
 					grad = gradient(f,x);
@@ -169,19 +225,7 @@ class main{
 		double res=Pow(v[0],2)+Pow(v[1],2);
 		return res;
 	}
-	/* used for testus maximus
-	static public double test1000(vector v){
-		it++;
-		double res=Pow(v[0],4)+Pow(v[1],4);
-		return scale*res;
-	}
 
-	static public double test2000(vector v){
-		it++;
-		double res=Pow(v[0],4)+Pow(v[1],4);
-		return res;
-	}
-	*/
 	static public double test2(vector v){
 		it++;
 		double res=Pow(v[0]+4,2)+Pow(v[1]+4,2);
@@ -204,12 +248,45 @@ class main{
 		return res;
 	}
 
+	static public double g(double x){
+		it++;
+		return Cos(5*x-1)*Exp(-x*x);
+	}
+	static public double testgauss(double x){
+		it++;
+		return Exp(-x*x);
+	}
+
 
 	public static void Main(){
+		//
+		WriteLine("=====[A]=====");
+		//make data for func g
+		int datasize = 50;
+		vector xs=new vector(datasize);
+		vector ys=new vector(datasize);
+		string toWrite="";
+		double start = -1;
+		double end = 1;
+		for(int i=0;i<datasize;i++){
+			xs[i]=(end-start)*i/(datasize-1)+start;
+			ys[i]=g(xs[i]);
+			toWrite+=$"{xs[i]}\t{ys[i]}\n";
+		}
+		File.WriteAllText("g.data",toWrite);
+		// trying to use ann
+		ann Ann = new ann(4);
+		Ann.train(xs,ys);
+		toWrite="";
+		for(int i=0;i<datasize;i++){
+			toWrite+=$"{xs[i]}\t{Ann.response(xs[i])}\n";
+		}
+		File.WriteAllText("gfit.data",toWrite);
+		/*
 		vector start;
 		int a;
 		int b;
-
+		
 		WriteLine("==============================[A]==============================");
 		WriteLine("test of f(x, y) = x^4 - 16x^2 + y^4 - 16y^2, with four local minima at (2*Sqrt(2),2*Sqrt(2)), (-2*Sqrt(2),2*Sqrt(2)), (2*Sqrt(2),-2*Sqrt(2)) and (-2*Sqrt(2),-2*Sqrt(2)), for referance, 2*Sqrt(2) is approximatly 2.83");
 		a=10;
@@ -312,20 +389,70 @@ class main{
 		qnewton(ros,start,acc).print("awnser:\t\t");
 		WriteLine($"should be approx (1,1)\tthe Rosenbrock's valley function was called {it} times\n"); it=0;
 		WriteLine("Quasi-newtons method seems to get the wrong awnser if the starting parameters are too far from the minima, where as the newtons method using the hessian matrix can take any starting parameters and til get the right awnser");
-	
-		// testus maximus
+		//newton(test2,new vector(1,1), 1e-6).print("newton test2: ");
+		
+		
 		/*
-		WriteLine("\ntest1000");
-		start = new vector(1,1);
-		start.print("start guess:\t");
-		scale=1000;
-		acc = 1e-4;
-		newton(test1000,start,acc*scale).print("awnser:\t\t");
-		WriteLine($"first local minima at (0, 0),    \tthe function was called {it} times\n"); it=0;
-		start = new vector(1,1);
-		start.print("start guess:\t");
-		newton(test2000,start).print("awnser:\t\t");
-		WriteLine($"second local minima at (0, 0),     \tthe function was called {it} times\n"); it=0;
+		// A
+		WriteLine("==============================[A]==============================");
+		var start = new vector(2,2);
+		WriteLine($"minimum of the Rosenbrock's valley function");
+		qnewton(ros,start).print("awnser: ");
+		WriteLine($"should be approx (1,1) it took {step} steps\n"); step=0;
+		WriteLine();
+				
+		WriteLine("minimum of the Himmelblau's function, has four local minima at (3,2), (-2.8,3.1) (-3.8,-3.3) and (3.6,-1.8):\n");
+		qnewton(him,new vector( 2.5  ,  2.5)).print("awnser: ");
+		WriteLine($"should be approx (3,2) it took {step} steps\n"); step=0;
+		qnewton(him,new vector(-2.5  ,  2.8)).print("awnser");
+		WriteLine($"should be approx (-2.8,3.1) it took {step} steps\n"); step=0;
+		qnewton(him,new vector(-3.5  , -3.0)).print("awnser: ");
+		WriteLine($"should be approx (-3.8,3.1) it took {step} steps\n"); step=0;
+		qnewton(him,new vector( 3.5  , -1.3)).print("awnser: ");
+		WriteLine($"should be approx (3.6,-1.9) it took {step} steps\n"); step=0;
+		// B
+		WriteLine("==============================[B]==============================");
+		Func<vector, double> bw = (x) => x[1]/(Pow(x[0]-x[2], 2) + Pow(x[3],2)/4); // E = 1, m = 2, gamma = 3, A = 4
+		var energy = new genlist<double>();
+		var signal = new genlist<double>();
+		var error  = new genlist<double>();
+		
+		string[] data = File.ReadAllLines("higgs.data");
+		string[] words;
+		var separators = new char[] {' ','\t'};
+		var options = StringSplitOptions.RemoveEmptyEntries;
+		for(int i = 0; i<data.Length; i++){
+			words = data[i].Split(separators, options);
+			energy.add(double.Parse(words[0]));
+			signal.add(double.Parse(words[1]));
+			error .add(double.Parse(words[2]));
+		}
+		WriteLine("energy\tsignal\terror");
+		for(int i=0;i<energy.size;i++){
+			WriteLine($"{energy[i]}\t{signal[i]}\t{error[i]}");
+		}
+
+		vector guess = new vector(1,1,1);
+		vector bw_params = fit(bw, guess, energy, signal, error,1e-4);
+		double A,m,gamma;A=bw_params[0];m=bw_params[1];gamma=bw_params[2];
+		WriteLine($"parameters for the Breit-Wigner function: A={A}\tm={m}\tgamma={gamma}");
+		
+		double bwData;
+		string toWrite="";
+		for(double E=100;E<160;E+=0.1){
+			bwData = bw(new vector(E,A,m,gamma));
+			toWrite+=$"{E}\t{bwData}\n";
+			
+		}
+		File.WriteAllText("bwfit.data",toWrite);
+		*/
+		/*
+		qnewton(him,new vector(-2.8, 3.1)).print($"should be approx (-2.8,3.1):"); 
+		WriteLine($"it took {step} steps"); step=0;
+		qnewton(him,new vector(-3.8,-3.3)).print($"should be approx (-3.8,-3.3):"); 
+ 		WriteLine($"it took {step} steps"); step=0;
+		qnewton(him,new vector( 3.6,-1,8)).print($"should be approx (3.6,-1.8):"); 
+		WriteLine($"it took {step} steps"); step=0;
 		*/
 	}	
 }// class

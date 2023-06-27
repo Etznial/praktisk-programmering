@@ -52,7 +52,7 @@ class main{
 				}
 				lambda/=2;
 				if(lambda < 1.0/1024){
-					//WriteLine("backtracking...");
+					//WriteLine($"backtracking at {it}");
 					start+=lambda*dx;
 					grad=gradient(f,start);
 					B.set_identity();
@@ -138,7 +138,7 @@ class main{
 		WriteLine("==============================[A]==============================");
 		vector start;
 		WriteLine("test of x^2+y^2");
-		start=new vector(5,-7);
+		start=new vector(10,-10);
 		qnewton(test1,start).print("awnser: ");
 		WriteLine($"should be approx (0,0) the function was called {it} times\n"); it=0;
 		
@@ -152,7 +152,7 @@ class main{
 		qnewton(test5,start).print("awnser: ");
 		WriteLine($"should be approx (7.41,0) the function was called {it} times\n"); it=0;
 
-		start = new vector(2,2);
+		start = new vector(3,3);
 		WriteLine($"minimum of the Rosenbrock's valley function");
 		qnewton(ros,start).print("awnser: ");
 		WriteLine($"should be approx (1,1) the function was called {it} times\n"); it=0;
@@ -214,6 +214,11 @@ class main{
  		WriteLine($"it took {step} steps"); step=0;
 		qnewton(him,new vector( 3.6,-1,8)).print($"should be approx (3.6,-1.8):"); 
 		WriteLine($"it took {step} steps"); step=0;
+		*/
+		/* // testus maximus
+		it=0;
+		qnewton(test5, new vector(10,-2),0.001).print("test5");
+		WriteLine($"it took {it} steps"); it=0;
 		*/
 	}	
 }// class
