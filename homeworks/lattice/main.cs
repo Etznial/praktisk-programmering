@@ -24,9 +24,9 @@ class main{
 		//Make data
 		double Au=0.288; // [Å]
 		double NbS2=0.33; // [Å]
-		latticeData(Au,Au ,PI/3,"testLattice1.data",50		,1		,1);
-		latticeData(NbS2,NbS2,PI/3,"testLattice2.data",43	,3		,3);
-		latticeData(NbS2,NbS2,PI/3,"testLattice3.data",43	,3+19*NbS2*0.5	,3+19*Tan(PI/6.0)*NbS2*0.5);
+		latticeData(Au,Au ,PI/3,"testLattice1.data",50		,0.2			,0.2);
+		latticeData(NbS2,NbS2,PI/3,"testLattice2.data",40	,1.5			,1.5);
+		latticeData(NbS2,NbS2,PI/3,"testLattice3.data",40	,1.5+19*NbS2*0.5	,1.5+19*Tan(PI/6.0)*NbS2*0.5);
 	}
 // class
 }

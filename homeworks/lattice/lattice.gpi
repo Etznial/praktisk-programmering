@@ -8,9 +8,11 @@ set xzeroaxis
 set yzeroaxis
 set title "Test of Moiré"
 set style fill transparent solid 0.5 border -1
-set style circle radius 0.1
 set size square
-plot [0:21] [0:21]\
- "testLattice1.data" with circles lc rgb "gold" notitle\
-,"testLattice2.data" with circles lc rgb "blue" notitle\
-,"testLattice3.data" with circles lc rgb "red" notitle\
+plot [0:12] [0:12]\
+ "testLattice1.data" with points pointtype 6 ps 0.288*2.1 lc rgb "#000000" notitle\
+,"testLattice1.data" with points pointtype 7 ps 0.288*2 lc rgb "#ffc020" notitle\
+,"testLattice2.data" with points pointtype 6 ps 0.33*2.1  lc rgb "#000000" notitle\
+,"testLattice2.data" with points pointtype 7 ps 0.33*2  lc rgb "#8b0000" notitle\
+,"testLattice3.data" with points pointtype 6 ps 0.33*2.1  lc rgb "#000000" notitle\
+,"testLattice3.data" with points pointtype 7 ps 0.33*2  lc rgb "#191970" notitle\

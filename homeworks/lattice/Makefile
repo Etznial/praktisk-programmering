@@ -6,7 +6,7 @@ Out.txt testLattice1.data testLattice2.data testLattice3.data : main.exe
 main.exe : main.cs matrix.dll
 	mcs main.cs $(addprefix -reference:,$(filter %.dll,$^)) -target:exe -out:main.exe
 
-Lattice.svg : lattice.gpi testLattice1.data testLattice2.data testLattice3.data
+Lattice.svg : lattice.gpi testLattice1.data testLattice2.data testLattice3.data 
 	gnuplot $<
 
 
