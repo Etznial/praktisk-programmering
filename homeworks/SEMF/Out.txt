@@ -1,0 +1,3 @@
+	Binding Energy [MeV]		Binding Energy [keV] IAEA
+37Cl:	-3619.01774824102		317100.4192
+56Fe:	-5711.54967499698		492259.9528

@@ -1,0 +1,14 @@
+set terminal svg
+set key top right
+set output "BindingEnergy.svg"
+set xlabel "Z"
+set ylabel "Energy [MeV]"
+set tics out
+set xzeroaxis
+set yzeroaxis
+set title "Binding Energy"
+set style fill transparent solid 0.5 border -1
+set style circle radius 0.1
+set size square
+plot [0:37] [-90000:90000]\
+ "BE37Cl.data" with circles lc rgb "black" notitle\

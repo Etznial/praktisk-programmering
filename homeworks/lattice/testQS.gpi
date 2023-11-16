@@ -1,0 +1,14 @@
+set terminal svg
+set key top right
+set output "TestQS.svg"
+set xlabel "x"
+set ylabel "y"
+set tics out
+set xzeroaxis
+set yzeroaxis
+set title "Test of qspline"
+plot [0:20] [-10:20]\
+ "test.data" with points pt 7 ps 0.5 title "test data"\
+,"qspline.data" with lines linetype 1 title "qspline"\
+,"qsplineIntegral.data" with lines linetype 2 title "qsplineIntegral"\
+,"qsplineDerivative.data" with lines linetype 3 title "qsplineDerivative"\
