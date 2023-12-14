@@ -1,7 +1,8 @@
-default : Out.txt BindingEnergy.svg MassEnergy.svg
+default : Out.txt BindingEnergy.svg MassEnergy.svg MassEnergypy.svg
 
-Out.txt BE37Cl.data ME37Cl.data : main.exe
+Out.txt BE37Cl.data ME37Cl.data ME37Clpy.data : main.exe semf.py
 	mono main.exe > Out.txt -target:$@
+	python3 semf.py >> Out.txt -target:$@
 
 main.exe : main.cs matrix.dll
 	mcs main.cs $(addprefix -reference:,$(filter %.dll,$^)) -target:exe -out:main.exe
@@ -10,6 +11,9 @@ BindingEnergy.svg : bindingEnergy.gpi BE37Cl.data
 	gnuplot $<
 
 MassEnergy.svg : massEnergy.gpi ME37Cl.data
+	gnuplot $<
+
+MassEnergypy.svg : massEnergypy.gpi ME37Clpy.data
 	gnuplot $<
 
 DIR = ../../matlib/matrix

@@ -1,14 +1,14 @@
 set terminal svg
 set key top right
-set output "MassEnergy.svg"
+set output "BindingEnergypy.svg"
 set xlabel "Z"
 set ylabel "Energy [MeV]"
 set tics out
 set xzeroaxis
 set yzeroaxis
-set title "Mass Energy"
+set title "Binding Energy py"
 set style fill transparent solid 0.5 border -1
 set style circle radius 0.1
 set size square
-plot [-1:37] [34000:36000]\
- "ME37Cl.data" with circles lc rgb "black" notitle\
+plot [0:37] [-700:400]\
+ "BE37Clpy.data" with circles lc rgb "black" notitle\
