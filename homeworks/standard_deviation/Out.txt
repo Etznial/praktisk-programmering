@@ -1,2 +1,8 @@
-mean: 2.429230769230769
-standart deveation: 0.36390157869176515
+Au tarrace height [Å]:		2.43±0.36
+5 min SL NbS2 height [Å]:	0.53±0.08
+5 min SL NbS2 emb height [Å]:	0.92±0.09
+5+5 mmath.sqrt(1/sum(w))in SL NbS2 height [Å]:	2.31±0.27
+5 min coverage [%]:	13.18±1.72
+5+5 min coverage [%]:	26.01±1.57
+5+5+5 min coverage [%]:	61.48±2.05
+15 min coverage [%]:	67.97±1.9
